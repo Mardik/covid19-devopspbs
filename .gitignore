@@ -1,0 +1,7 @@
+__pycache__
+*.sqlite3
+*static*
+venv
+.DS_Store
+datadir
+mysite/covid19/migrations/00*

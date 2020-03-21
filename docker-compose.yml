@@ -1,0 +1,45 @@
+version: '3'
+
+services:
+  django:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./:/app/
+    #depends_on:
+    #  - postgres-db
+    #  - pgadmin
+    networks:
+      - dev-grc-networking
+
+  postgres-db:
+    image: postgres:11
+    environment:
+      POSTGRES_PASSWORD: "teste"
+      POSTGRES_USER: "teste"
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./datadir:/var/lib/postgresql/data
+    networks:
+      - dev-grc-networking
+      
+  pgadmin:
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: "teste@teste.com"
+      PGADMIN_DEFAULT_PASSWORD: "teste"
+    ports:
+      - "12345:80"
+    depends_on:
+      - postgres-db
+    networks:
+      - dev-grc-networking
+  
+networks: 
+  dev-grc-networking:
+    driver: bridge
+      
