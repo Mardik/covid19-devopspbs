@@ -196,13 +196,20 @@ class Municipio(models.Model):
 
     #Atributos do Model
     nome = models.CharField(max_length=100, verbose_name='Nome:')
-    codigo_do_ibge = models.CharField(max_length=6, verbose_name='Código do IBGE:',blank=True)
     populacao_total = models.BigIntegerField(default=0)
-    populacao_grupo_de_risco = models.BigIntegerField(default=0)
-    populacao_idosos = models.BigIntegerField(default=0)
-    populacao_adultos = models.BigIntegerField(default=0)
-    populacao_jovens = models.BigIntegerField(default=0)
-    populacao_infantil = models.BigIntegerField(default=0)
+    populacao_projetada = models.BigIntegerField(default=0)
+    populacao_00_04 = models.BigIntegerField(default=0)
+    populacao_05_09 = models.BigIntegerField(default=0)
+    populacao_10_14 = models.BigIntegerField(default=0)
+    populacao_15_19 = models.BigIntegerField(default=0)
+    populacao_20_24 = models.BigIntegerField(default=0)
+    populacao_25_29 = models.BigIntegerField(default=0)
+    populacao_30_39 = models.BigIntegerField(default=0)
+    populacao_40_49 = models.BigIntegerField(default=0)
+    populacao_50_59 = models.BigIntegerField(default=0)
+    populacao_60_69 = models.BigIntegerField(default=0)
+    populacao_70 = models.BigIntegerField(default=0)
+    
 
     #Atributos de Relacionamentos
     uf = models.ForeignKey('UF', verbose_name='UF:',on_delete=models.PROTECT)
@@ -214,6 +221,19 @@ class Municipio(models.Model):
     instituicoesDeSaude = models.ManyToManyField(InstituicaoDeSaude)
     bairros = models.ManyToManyField(Bairro)
     #Metodos
+    #def populacao_grupo_de_risco(self):
+    def populacao_idosos(self):
+        return populacao_60_69 + populacao_70
+    def populacao_adultos(self):
+        return (populacao_20_24+
+                populacao_25_29+
+                populacao_30_39+
+                populacao_40_49+
+                populacao_50_59)
+    def populacao_jovens(self):
+        return populacao_10_14+populacao_15_19
+    def populacao_infantil(self):
+        return populacao_00_04+populacao_05_09
 
     #Meta dados
     class Meta:
@@ -222,7 +242,7 @@ class Municipio(models.Model):
 
     #Representação textual
     def __str__(self):
-        return "%s" % (self.nome)
+        return "%s - %s" % (self.uf.sigla,self.nome)
 
 #Unidade da Federação
 class UF(models.Model):
@@ -232,7 +252,6 @@ class UF(models.Model):
     #Atributos
     nome = models.CharField(max_length=50, verbose_name='Nome:',blank=True)
     sigla = models.CharField(max_length=2, verbose_name='Sigla:',blank=True)
-    codigo_do_ibge = models.CharField(max_length=6, verbose_name='Código do IBGE:',blank=True)
     #Atribuitos de Relacionamentos
     
     #Metodos

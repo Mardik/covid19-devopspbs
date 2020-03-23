@@ -61,6 +61,14 @@ class MunicipioAdmin(admin.ModelAdmin):
         MunicipioRegistoDeCasosObitosInline,
         MunicipioRegistoDeCasosCuradosInline,
     ]
+    
+    search_fields = ['nome']
+    list_display = [
+        'uf','nome','populacao_00_04','populacao_05_09','populacao_10_14'
+    ]
+    list_filter = [
+        'uf__sigla'
+    ]
     exclude = (
         'registroDeCasosSuspeitos',
         'registroDeCasosConfirmados',
@@ -70,9 +78,13 @@ class MunicipioAdmin(admin.ModelAdmin):
         'instituicoesDeSaude',
         'bairros',
     )
+class UFAdmin(admin.ModelAdmin):
+    list_display = [
+        'id','sigla','nome'
+    ]
 
 #Admin Register
-admin.site.register(UF)
+admin.site.register(UF,UFAdmin)
 admin.site.register(Municipio,MunicipioAdmin)
 admin.site.register(Bairro)
 admin.site.register(InstituicaoDeSaude,InstituicaoDeSaudeAdmin)
