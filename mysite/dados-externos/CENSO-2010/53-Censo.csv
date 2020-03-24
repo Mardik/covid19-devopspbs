@@ -1,0 +1,286 @@
+"Posição","Nome","Localidade","2010","Unidade","Multiplicador"
+"3","Amostra - Características da população",,,"",""
+"3.1","Pessoas de 10 anos ou mais de idade, ocupadas na semana de referência",,,"",""
+"3.1.1","Cor ou raça",,,"",""
+"3.1.1.1","Amarela",,,"",""
+"3.1.1.1.1","Posição na ocupação",,,"",""
+"3.1.1.1.1.1","Conta própria","Brasília","4074","pessoas",1
+"3.1.1.1.1.2","Empregadores","Brasília","593","pessoas",1
+"3.1.1.1.1.3","Empregados",,,"",""
+"3.1.1.1.1.3.1","Categoria do emprego",,,"",""
+"3.1.1.1.1.3.1.1","Com carteira de trabalho assinada","Brasília","11389","pessoas",1
+"3.1.1.1.1.3.1.2","Sem carteira de trabalho assinada","Brasília","3617","pessoas",1
+"3.1.1.1.1.3.1.3","Militares e funcionários públicos estatutários","Brasília","2565","pessoas",1
+"3.1.1.1.1.4","Trabalhadores na produção para o próprio consumo","Brasília","198","pessoas",1
+"3.1.1.1.1.5","Não remunerados","Brasília","565","pessoas",1
+"3.1.1.2","Branca",,,"",""
+"3.1.1.2.1","Posição na ocupação",,,"",""
+"3.1.1.2.1.1","Conta própria","Brasília","87467","pessoas",1
+"3.1.1.2.1.2","Empregadores","Brasília","14298","pessoas",1
+"3.1.1.2.1.3","Empregados",,,"",""
+"3.1.1.2.1.3.1","Categoria do emprego",,,"",""
+"3.1.1.2.1.3.1.1","Com carteira de trabalho assinada","Brasília","266740","pessoas",1
+"3.1.1.2.1.3.1.2","Sem carteira de trabalho assinada","Brasília","69022","pessoas",1
+"3.1.1.2.1.3.1.3","Militares e funcionários públicos estatutários","Brasília","93649","pessoas",1
+"3.1.1.2.1.4","Trabalhadores na produção para o próprio consumo","Brasília","2696","pessoas",1
+"3.1.1.2.1.5","Não remunerados","Brasília","5164","pessoas",1
+"3.1.1.3","Indígena",,,"",""
+"3.1.1.3.1","Posição na ocupação",,,"",""
+"3.1.1.3.1.1","Conta própria","Brasília","744","pessoas",1
+"3.1.1.3.1.2","Empregadores","Brasília","43","pessoas",1
+"3.1.1.3.1.3","Empregados",,,"",""
+"3.1.1.3.1.3.1","Categoria do emprego",,,"",""
+"3.1.1.3.1.3.1.1","Com carteira de trabalho assinada","Brasília","1909","pessoas",1
+"3.1.1.3.1.3.1.2","Sem carteira de trabalho assinada","Brasília","600","pessoas",1
+"3.1.1.3.1.3.1.3","Militares e funcionários públicos estatutários","Brasília","299","pessoas",1
+"3.1.1.3.1.4","Trabalhadores na produção para o próprio consumo","Brasília","50","pessoas",1
+"3.1.1.3.1.5","Não remunerados","Brasília","99999999999992","pessoas",1
+"3.1.1.4","Parda",,,"",""
+"3.1.1.4.1","Posição na ocupação",,,"",""
+"3.1.1.4.1.1","Conta própria","Brasília","99875","pessoas",1
+"3.1.1.4.1.2","Empregadores","Brasília","8084","pessoas",1
+"3.1.1.4.1.3","Empregados",,,"",""
+"3.1.1.4.1.3.1","Categoria do emprego",,,"",""
+"3.1.1.4.1.3.1.1","Com carteira de trabalho assinada","Brasília","322385","pessoas",1
+"3.1.1.4.1.3.1.2","Sem carteira de trabalho assinada","Brasília","104559","pessoas",1
+"3.1.1.4.1.3.1.3","Militares e funcionários públicos estatutários","Brasília","67159","pessoas",1
+"3.1.1.4.1.4","Trabalhadores na produção para o próprio consumo","Brasília","3548","pessoas",1
+"3.1.1.4.1.5","Não remunerados","Brasília","5764","pessoas",1
+"3.1.1.5","Preta",,,"",""
+"3.1.1.5.1","Posição na ocupação",,,"",""
+"3.1.1.5.1.1","Conta própria","Brasília","15381","pessoas",1
+"3.1.1.5.1.2","Empregadores","Brasília","707","pessoas",1
+"3.1.1.5.1.3","Empregados",,,"",""
+"3.1.1.5.1.3.1","Categoria do emprego",,,"",""
+"3.1.1.5.1.3.1.1","Com carteira de trabalho assinada","Brasília","60637","pessoas",1
+"3.1.1.5.1.3.1.2","Sem carteira de trabalho assinada","Brasília","21040","pessoas",1
+"3.1.1.5.1.3.1.3","Militares e funcionários públicos estatutários","Brasília","11241","pessoas",1
+"3.1.1.5.1.4","Trabalhadores na produção para o próprio consumo","Brasília","640","pessoas",1
+"3.1.1.5.1.5","Não remunerados","Brasília","842","pessoas",1
+"3.1.1.6","Sem declaração",,,"",""
+"3.1.1.6.1","Posição na ocupação",,,"",""
+"3.1.1.6.1.1","Conta própria","Brasília","99999999999992","pessoas",1
+"3.1.1.6.1.2","Empregadores","Brasília","99999999999992","pessoas",1
+"3.1.1.6.1.3","Empregados",,,"",""
+"3.1.1.6.1.3.1","Categoria do emprego",,,"",""
+"3.1.1.6.1.3.1.1","Com carteira de trabalho assinada","Brasília","99999999999992","pessoas",1
+"3.1.1.6.1.3.1.2","Sem carteira de trabalho assinada","Brasília","99999999999992","pessoas",1
+"3.1.1.6.1.3.1.3","Militares e funcionários públicos estatutários","Brasília","99999999999992","pessoas",1
+"3.1.1.6.1.4","Trabalhadores na produção para o próprio consumo","Brasília","99999999999992","pessoas",1
+"3.1.1.6.1.5","Não remunerados","Brasília","99999999999992","pessoas",1
+"3.2","Pessoas residentes em domicílios particulares",,,"",""
+"3.2.1","Cor ou raça",,,"",""
+"3.2.1.1","Amarela",,,"",""
+"3.2.1.1.1","Classe de rendimento",,,"",""
+"3.2.1.1.1.1","Sem rendimento","Brasília","769","pessoas",1
+"3.2.1.1.1.2","Até 1/8 de salário mínimo","Brasília","323","pessoas",1
+"3.2.1.1.1.3","Mais de 1/8 a 1/4 de salário mínimo","Brasília","809","pessoas",1
+"3.2.1.1.1.4","Mais de 1/4 a 1/2 salário mínimo","Brasília","4706","pessoas",1
+"3.2.1.1.1.5","Mais de 1/2 a 1 salário mínimo","Brasília","10032","pessoas",1
+"3.2.1.1.1.6","Mais de 1 a 2 salários mínimos","Brasília","10075","pessoas",1
+"3.2.1.1.1.7","Mais de 2 a 3 salários mínimos","Brasília","4275","pessoas",1
+"3.2.1.1.1.8","Mais de 3 a 5 salários mínimos","Brasília","4368","pessoas",1
+"3.2.1.1.1.9","Mais de 5 a 10 salários mínimos","Brasília","4849","pessoas",1
+"3.2.1.1.1.10","Mais de 10 salários mínimos","Brasília","2269","pessoas",1
+"3.2.1.2","Branca",,,"",""
+"3.2.1.2.1","Classe de rendimento",,,"",""
+"3.2.1.2.1.1","Sem rendimento","Brasília","29487","pessoas",1
+"3.2.1.2.1.2","Até 1/8 de salário mínimo","Brasília","5816","pessoas",1
+"3.2.1.2.1.3","Mais de 1/8 a 1/4 de salário mínimo","Brasília","21555","pessoas",1
+"3.2.1.2.1.4","Mais de 1/4 a 1/2 salário mínimo","Brasília","79896","pessoas",1
+"3.2.1.2.1.5","Mais de 1/2 a 1 salário mínimo","Brasília","187685","pessoas",1
+"3.2.1.2.1.6","Mais de 1 a 2 salários mínimos","Brasília","206266","pessoas",1
+"3.2.1.2.1.7","Mais de 2 a 3 salários mínimos","Brasília","114516","pessoas",1
+"3.2.1.2.1.8","Mais de 3 a 5 salários mínimos","Brasília","136240","pessoas",1
+"3.2.1.2.1.9","Mais de 5 a 10 salários mínimos","Brasília","160913","pessoas",1
+"3.2.1.2.1.10","Mais de 10 salários mínimos","Brasília","125118","pessoas",1
+"3.2.1.3","Indígena",,,"",""
+"3.2.1.3.1","Classe de rendimento",,,"",""
+"3.2.1.3.1.1","Sem rendimento","Brasília","147","pessoas",1
+"3.2.1.3.1.2","Até 1/8 de salário mínimo","Brasília","130","pessoas",1
+"3.2.1.3.1.3","Mais de 1/8 a 1/4 de salário mínimo","Brasília","20","pessoas",1
+"3.2.1.3.1.4","Mais de 1/4 a 1/2 salário mínimo","Brasília","724","pessoas",1
+"3.2.1.3.1.5","Mais de 1/2 a 1 salário mínimo","Brasília","1731","pessoas",1
+"3.2.1.3.1.6","Mais de 1 a 2 salários mínimos","Brasília","1753","pessoas",1
+"3.2.1.3.1.7","Mais de 2 a 3 salários mínimos","Brasília","952","pessoas",1
+"3.2.1.3.1.8","Mais de 3 a 5 salários mínimos","Brasília","724","pessoas",1
+"3.2.1.3.1.9","Mais de 5 a 10 salários mínimos","Brasília","578","pessoas",1
+"3.2.1.3.1.10","Mais de 10 salários mínimos","Brasília","235","pessoas",1
+"3.2.1.4","Parda",,,"",""
+"3.2.1.4.1","Classe de rendimento",,,"",""
+"3.2.1.4.1.1","Sem rendimento","Brasília","34974","pessoas",1
+"3.2.1.4.1.2","Até 1/8 de salário mínimo","Brasília","14725","pessoas",1
+"3.2.1.4.1.3","Mais de 1/8 a 1/4 de salário mínimo","Brasília","48922","pessoas",1
+"3.2.1.4.1.4","Mais de 1/4 a 1/2 salário mínimo","Brasília","181780","pessoas",1
+"3.2.1.4.1.5","Mais de 1/2 a 1 salário mínimo","Brasília","326293","pessoas",1
+"3.2.1.4.1.6","Mais de 1 a 2 salários mínimos","Brasília","287404","pessoas",1
+"3.2.1.4.1.7","Mais de 2 a 3 salários mínimos","Brasília","114502","pessoas",1
+"3.2.1.4.1.8","Mais de 3 a 5 salários mínimos","Brasília","103475","pessoas",1
+"3.2.1.4.1.9","Mais de 5 a 10 salários mínimos","Brasília","84871","pessoas",1
+"3.2.1.4.1.10","Mais de 10 salários mínimos","Brasília","40790","pessoas",1
+"3.2.1.5","Preta",,,"",""
+"3.2.1.5.1","Classe de rendimento",,,"",""
+"3.2.1.5.1.1","Sem rendimento","Brasília","5010","pessoas",1
+"3.2.1.5.1.2","Até 1/8 de salário mínimo","Brasília","2220","pessoas",1
+"3.2.1.5.1.3","Mais de 1/8 a 1/4 de salário mínimo","Brasília","7166","pessoas",1
+"3.2.1.5.1.4","Mais de 1/4 a 1/2 salário mínimo","Brasília","27125","pessoas",1
+"3.2.1.5.1.5","Mais de 1/2 a 1 salário mínimo","Brasília","53537","pessoas",1
+"3.2.1.5.1.6","Mais de 1 a 2 salários mínimos","Brasília","47359","pessoas",1
+"3.2.1.5.1.7","Mais de 2 a 3 salários mínimos","Brasília","16580","pessoas",1
+"3.2.1.5.1.8","Mais de 3 a 5 salários mínimos","Brasília","14244","pessoas",1
+"3.2.1.5.1.9","Mais de 5 a 10 salários mínimos","Brasília","12031","pessoas",1
+"3.2.1.5.1.10","Mais de 10 salários mínimos","Brasília","5219","pessoas",1
+"3.2.1.6","Sem declaração",,,"",""
+"3.2.1.6.1","Classe de rendimento",,,"",""
+"3.2.1.6.1.1","Sem rendimento","Brasília","41","pessoas",1
+"3.2.1.6.1.2","Até 1/8 de salário mínimo","Brasília","99999999999992","pessoas",1
+"3.2.1.6.1.3","Mais de 1/8 a 1/4 de salário mínimo","Brasília","289","pessoas",1
+"3.2.1.6.1.4","Mais de 1/4 a 1/2 salário mínimo","Brasília","80","pessoas",1
+"3.2.1.6.1.5","Mais de 1/2 a 1 salário mínimo","Brasília","124","pessoas",1
+"3.2.1.6.1.6","Mais de 1 a 2 salários mínimos","Brasília","99999999999992","pessoas",1
+"3.2.1.6.1.7","Mais de 2 a 3 salários mínimos","Brasília","99999999999992","pessoas",1
+"3.2.1.6.1.8","Mais de 3 a 5 salários mínimos","Brasília","148","pessoas",1
+"3.2.1.6.1.9","Mais de 5 a 10 salários mínimos","Brasília","125","pessoas",1
+"3.2.1.6.1.10","Mais de 10 salários mínimos","Brasília","46","pessoas",1
+"3.3","População residente",,,"",""
+"3.3.1","Grupo de idade",,,"",""
+"3.3.1.1","0 a 4 anos","Brasília","189171","pessoas",1
+"3.3.1.1.1","Situação domiciliar",,,"",""
+"3.3.1.1.1.1","Urbana","Brasília","182069","pessoas",1
+"3.3.1.1.1.2","Rural","Brasília","7101","pessoas",1
+"3.3.1.2","5 a 9 anos","Brasília","200087","pessoas",1
+"3.3.1.2.1","Situação domiciliar",,,"",""
+"3.3.1.2.1.1","Urbana","Brasília","192180","pessoas",1
+"3.3.1.2.1.2","Rural","Brasília","7907","pessoas",1
+"3.3.1.3","10 a 14 anos","Brasília","219091","pessoas",1
+"3.3.1.3.1","Situação domiciliar",,,"",""
+"3.3.1.3.1.1","Urbana","Brasília","210293","pessoas",1
+"3.3.1.3.1.2","Rural","Brasília","8798","pessoas",1
+"3.3.1.4","15 a 19 anos","Brasília","220178","pessoas",1
+"3.3.1.4.1","Situação domiciliar",,,"",""
+"3.3.1.4.1.1","Urbana","Brasília","211749","pessoas",1
+"3.3.1.4.1.2","Rural","Brasília","8429","pessoas",1
+"3.3.1.5","20 a 24 anos","Brasília","245521","pessoas",1
+"3.3.1.5.1","Situação domiciliar",,,"",""
+"3.3.1.5.1.1","Urbana","Brasília","237120","pessoas",1
+"3.3.1.5.1.2","Rural","Brasília","8401","pessoas",1
+"3.3.1.6","25 a 29 anos","Brasília","267638","pessoas",1
+"3.3.1.6.1","Situação domiciliar",,,"",""
+"3.3.1.6.1.1","Urbana","Brasília","258617","pessoas",1
+"3.3.1.6.1.2","Rural","Brasília","9021","pessoas",1
+"3.3.1.7","30 a 39 anos","Brasília","464780","pessoas",1
+"3.3.1.7.1","Situação domiciliar",,,"",""
+"3.3.1.7.1.1","Urbana","Brasília","450016","pessoas",1
+"3.3.1.7.1.2","Rural","Brasília","14763","pessoas",1
+"3.3.1.8","40 a 49 anos","Brasília","345517","pessoas",1
+"3.3.1.8.1","Situação domiciliar",,,"",""
+"3.3.1.8.1.1","Urbana","Brasília","334542","pessoas",1
+"3.3.1.8.1.2","Rural","Brasília","10975","pessoas",1
+"3.3.1.9","50 a 59 anos","Brasília","220165","pessoas",1
+"3.3.1.9.1","Situação domiciliar",,,"",""
+"3.3.1.9.1.1","Urbana","Brasília","212793","pessoas",1
+"3.3.1.9.1.2","Rural","Brasília","7372","pessoas",1
+"3.3.1.10","60 a 69 anos","Brasília","118604","pessoas",1
+"3.3.1.10.1","Situação domiciliar",,,"",""
+"3.3.1.10.1.1","Urbana","Brasília","114895","pessoas",1
+"3.3.1.10.1.2","Rural","Brasília","3709","pessoas",1
+"3.3.1.11","70 anos ou mais","Brasília","79408","pessoas",1
+"3.3.1.11.1","Situação domiciliar",,,"",""
+"3.3.1.11.1.1","Urbana","Brasília","76998","pessoas",1
+"3.3.1.11.1.2","Rural","Brasília","2410","pessoas",1
+"3.3.2","Sexo",,,"",""
+"3.3.2.1","Masculino",,,"",""
+"3.3.2.1.1","Grupo de idade",,,"",""
+"3.3.2.1.1.1","0 a 4 anos","Brasília","96713","pessoas",1
+"3.3.2.1.1.1.1","Situação domiciliar",,,"",""
+"3.3.2.1.1.1.1.1","Urbana","Brasília","93090","pessoas",1
+"3.3.2.1.1.1.1.2","Rural","Brasília","3623","pessoas",1
+"3.3.2.1.1.2","5 a 9 anos","Brasília","101468","pessoas",1
+"3.3.2.1.1.2.1","Situação domiciliar",,,"",""
+"3.3.2.1.1.2.1.1","Urbana","Brasília","97437","pessoas",1
+"3.3.2.1.1.2.1.2","Rural","Brasília","4031","pessoas",1
+"3.3.2.1.1.3","10 a 14 anos","Brasília","110741","pessoas",1
+"3.3.2.1.1.3.1","Situação domiciliar",,,"",""
+"3.3.2.1.1.3.1.1","Urbana","Brasília","106330","pessoas",1
+"3.3.2.1.1.3.1.2","Rural","Brasília","4411","pessoas",1
+"3.3.2.1.1.4","15 a 19 anos","Brasília","108445","pessoas",1
+"3.3.2.1.1.4.1","Situação domiciliar",,,"",""
+"3.3.2.1.1.4.1.1","Urbana","Brasília","104204","pessoas",1
+"3.3.2.1.1.4.1.2","Rural","Brasília","4240","pessoas",1
+"3.3.2.1.1.5","20 a 24 anos","Brasília","120437","pessoas",1
+"3.3.2.1.1.5.1","Situação domiciliar",,,"",""
+"3.3.2.1.1.5.1.1","Urbana","Brasília","115227","pessoas",1
+"3.3.2.1.1.5.1.2","Rural","Brasília","5210","pessoas",1
+"3.3.2.1.1.6","25 a 29 anos","Brasília","127346","pessoas",1
+"3.3.2.1.1.6.1","Situação domiciliar",,,"",""
+"3.3.2.1.1.6.1.1","Urbana","Brasília","121918","pessoas",1
+"3.3.2.1.1.6.1.2","Rural","Brasília","5428","pessoas",1
+"3.3.2.1.1.7","30 a 39 anos","Brasília","218302","pessoas",1
+"3.3.2.1.1.7.1","Situação domiciliar",,,"",""
+"3.3.2.1.1.7.1.1","Urbana","Brasília","209986","pessoas",1
+"3.3.2.1.1.7.1.2","Rural","Brasília","8316","pessoas",1
+"3.3.2.1.1.8","40 a 49 anos","Brasília","161414","pessoas",1
+"3.3.2.1.1.8.1","Situação domiciliar",,,"",""
+"3.3.2.1.1.8.1.1","Urbana","Brasília","155224","pessoas",1
+"3.3.2.1.1.8.1.2","Rural","Brasília","6190","pessoas",1
+"3.3.2.1.1.9","50 a 59 anos","Brasília","99684","pessoas",1
+"3.3.2.1.1.9.1","Situação domiciliar",,,"",""
+"3.3.2.1.1.9.1.1","Urbana","Brasília","95524","pessoas",1
+"3.3.2.1.1.9.1.2","Rural","Brasília","4160","pessoas",1
+"3.3.2.1.1.10","60 a 69 anos","Brasília","51155","pessoas",1
+"3.3.2.1.1.10.1","Situação domiciliar",,,"",""
+"3.3.2.1.1.10.1.1","Urbana","Brasília","49199","pessoas",1
+"3.3.2.1.1.10.1.2","Rural","Brasília","1955","pessoas",1
+"3.3.2.1.1.11","70 anos ou mais","Brasília","33175","pessoas",1
+"3.3.2.1.1.11.1","Situação domiciliar",,,"",""
+"3.3.2.1.1.11.1.1","Urbana","Brasília","31920","pessoas",1
+"3.3.2.1.1.11.1.2","Rural","Brasília","1255","pessoas",1
+"3.3.2.2","Feminino",,,"",""
+"3.3.2.2.1","Grupo de idade",,,"",""
+"3.3.2.2.1.1","0 a 4 anos","Brasília","92458","pessoas",1
+"3.3.2.2.1.1.1","Situação domiciliar",,,"",""
+"3.3.2.2.1.1.1.1","Urbana","Brasília","88980","pessoas",1
+"3.3.2.2.1.1.1.2","Rural","Brasília","3478","pessoas",1
+"3.3.2.2.1.2","5 a 9 anos","Brasília","98619","pessoas",1
+"3.3.2.2.1.2.1","Situação domiciliar",,,"",""
+"3.3.2.2.1.2.1.1","Urbana","Brasília","94743","pessoas",1
+"3.3.2.2.1.2.1.2","Rural","Brasília","3876","pessoas",1
+"3.3.2.2.1.3","10 a 14 anos","Brasília","108349","pessoas",1
+"3.3.2.2.1.3.1","Situação domiciliar",,,"",""
+"3.3.2.2.1.3.1.1","Urbana","Brasília","103963","pessoas",1
+"3.3.2.2.1.3.1.2","Rural","Brasília","4386","pessoas",1
+"3.3.2.2.1.4","15 a 19 anos","Brasília","111733","pessoas",1
+"3.3.2.2.1.4.1","Situação domiciliar",,,"",""
+"3.3.2.2.1.4.1.1","Urbana","Brasília","107544","pessoas",1
+"3.3.2.2.1.4.1.2","Rural","Brasília","4189","pessoas",1
+"3.3.2.2.1.5","20 a 24 anos","Brasília","125084","pessoas",1
+"3.3.2.2.1.5.1","Situação domiciliar",,,"",""
+"3.3.2.2.1.5.1.1","Urbana","Brasília","121893","pessoas",1
+"3.3.2.2.1.5.1.2","Rural","Brasília","3191","pessoas",1
+"3.3.2.2.1.6","25 a 29 anos","Brasília","140292","pessoas",1
+"3.3.2.2.1.6.1","Situação domiciliar",,,"",""
+"3.3.2.2.1.6.1.1","Urbana","Brasília","136699","pessoas",1
+"3.3.2.2.1.6.1.2","Rural","Brasília","3593","pessoas",1
+"3.3.2.2.1.7","30 a 39 anos","Brasília","246477","pessoas",1
+"3.3.2.2.1.7.1","Situação domiciliar",,,"",""
+"3.3.2.2.1.7.1.1","Urbana","Brasília","240030","pessoas",1
+"3.3.2.2.1.7.1.2","Rural","Brasília","6447","pessoas",1
+"3.3.2.2.1.8","40 a 49 anos","Brasília","184103","pessoas",1
+"3.3.2.2.1.8.1","Situação domiciliar",,,"",""
+"3.3.2.2.1.8.1.1","Urbana","Brasília","179318","pessoas",1
+"3.3.2.2.1.8.1.2","Rural","Brasília","4785","pessoas",1
+"3.3.2.2.1.9","50 a 59 anos","Brasília","120481","pessoas",1
+"3.3.2.2.1.9.1","Situação domiciliar",,,"",""
+"3.3.2.2.1.9.1.1","Urbana","Brasília","117269","pessoas",1
+"3.3.2.2.1.9.1.2","Rural","Brasília","3213","pessoas",1
+"3.3.2.2.1.10","60 a 69 anos","Brasília","67449","pessoas",1
+"3.3.2.2.1.10.1","Situação domiciliar",,,"",""
+"3.3.2.2.1.10.1.1","Urbana","Brasília","65695","pessoas",1
+"3.3.2.2.1.10.1.2","Rural","Brasília","1754","pessoas",1
+"3.3.2.2.1.11","70 anos ou mais","Brasília","46233","pessoas",1
+"3.3.2.2.1.11.1","Situação domiciliar",,,"",""
+"3.3.2.2.1.11.1.1","Urbana","Brasília","45078","pessoas",1
+"3.3.2.2.1.11.1.2","Rural","Brasília","1155","pessoas",1
+
+
+Fonte: IBGE, Censo Demográfico 2010

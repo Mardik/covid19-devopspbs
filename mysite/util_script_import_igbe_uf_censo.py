@@ -20,7 +20,7 @@ UFS_IDS = UF.objects.all().order_by('id').values_list('id', flat=True)
 # que é qnd uma UF tem dois municipios com o mesmo nome, mais 
 # fique a vontade!
 def import_ibge_uf_municipios_dados_populacionais(base_path,UF_ID):
-    print("Importando dados da {UF} do Censo de 2010".format(UF=UF_ID))
+    print("Importando dados da UF {UF} do Censo de 2010".format(UF=UF_ID))
     with open(base_path,'r') as f:
         reader = csv.DictReader(f,delimiter=',')
         for dict_r in reader:
@@ -82,6 +82,12 @@ def import_ibge_uf_municipios_dados_populacionais(base_path,UF_ID):
              
 #Executa
 #Importa os dados
-for UF_ID in UFS_IDS:
-    base_path = BASE_PATH.format(UF_ID=UF_ID)
-    import_ibge_uf_municipios_dados_populacionais(base_path,UF_ID)
+#Intera sobre todos as UF's
+#for UF_ID in UFS_IDS:
+#    base_path = BASE_PATH.format(UF_ID=UF_ID)
+#    import_ibge_uf_municipios_dados_populacionais(base_path,UF_ID)
+
+#Intera sobre uma UF especifica
+UF_ID = 15
+base_path = BASE_PATH.format(UF_ID=UF_ID)
+import_ibge_uf_municipios_dados_populacionais(base_path,UF_ID)

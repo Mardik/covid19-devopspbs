@@ -2,70 +2,48 @@ from django.contrib import admin
 from .models import *
 
 
-class InstituicaoDeSaudeRegistrosDeRecursosEmSaudeInline(admin.TabularInline):
-
-    model = InstituicaoDeSaude.registrosDeRecursos.through
-
-class InstituicaoDeSaudeAdmin(admin.ModelAdmin):
-    inlines = [
-        InstituicaoDeSaudeRegistrosDeRecursosEmSaudeInline,
-    ]
-    exclude = ('registrosDeRecursos',)
-
 #Admin classes
 #Admin Classe Tabular inline para exibição tabular em linha
 #do form para adição de rgistro de casos suspeitos.
-class MunicipioRegistoDeCasosSuspeitosInline(admin.TabularInline):
-    #Referência a Through gerada automaticamente em relacionamentos
-    # m2m. 
-    model = Municipio.registroDeCasosSuspeitos.through
-
-# Organização tabular inline do form RegistoDeCasosConfirmados
-class MunicipioRegistoDeCasosConfirmadosInline(admin.TabularInline):
-    model = Municipio.registroDeCasosSuspeitos.through
-
-# Organização tabular inline do form RegistoDeCasosConfirmados
-class MunicipioRegistoDeCasosConfirmadosInline(admin.TabularInline):
-    model = Municipio.registroDeCasosConfirmados.through
-
-# Organização tabular inline do form RegistoDeCasosObitos
-class MunicipioRegistoDeCasosObitosInline(admin.TabularInline):
-    model = Municipio.registroDeCasosObitos.through
-
-# Organização tabular inline do form RegistoDeCasosCurados
-class MunicipioRegistoDeCasosCuradosInline(admin.TabularInline):
-    model = Municipio.registroDeCasosCurados.through
-
-# Organização tabular inline do form RegistoDeCasosGraves
-class MunicipioRegistoDeCasosGravesInline(admin.TabularInline):
-    model = Municipio.registroDeCasosGraves.through
-
 # Organização tabular inline do form Instituições de Saúde
-class MunicipioInstituicaoDeSaudeInline(admin.TabularInline):
-    model = Municipio.instituicoesDeSaude.through
-
-# Organização tabular inline do form Bairro
-class MunicipioBairrosInline(admin.TabularInline):
-    model = Municipio.bairros.through
-
 #Admin classe do model Municipio contemplando a exição tabular para
 #registro de casos supeitos e excluindo o campo registros de casos supeitos
 #do change form.
 class MunicipioAdmin(admin.ModelAdmin):
-    inlines = [
-        MunicipioInstituicaoDeSaudeInline,
-        MunicipioBairrosInline,
-        MunicipioRegistoDeCasosSuspeitosInline,
-        MunicipioRegistoDeCasosConfirmadosInline,
-        MunicipioRegistoDeCasosGravesInline,
-        MunicipioRegistoDeCasosObitosInline,
-        MunicipioRegistoDeCasosCuradosInline,
-    ]
-    
     search_fields = ['nome']
     list_display = [
-        'uf','nome','populacao_00_04','populacao_05_09','populacao_10_14'
+        'uf',
+        'nome',
+        'populacao_total',
+        'populacao_idosos',
+        'populacao_adultos',
+        'populacao_jovens',
+        'populacao_infantil',
     ]
+    readonly_fields = (
+        'id',
+        'populacao_total',
+        'populacao_idosos',
+        'populacao_adultos',
+        'populacao_jovens',
+        'populacao_infantil',
+        'populacao_total_infectada',
+        'populacao_idosos_infectada',
+        'populacao_adultos_infectada',
+        'populacao_jovens_infectada',
+        'populacao_infantil_infectada',
+        'populacao_00_04_infectada',
+        'populacao_05_09_infectada',
+        'populacao_10_14_infectada',
+        'populacao_15_19_infectada',
+        'populacao_20_24_infectada',
+        'populacao_25_29_infectada',
+        'populacao_30_39_infectada',
+        'populacao_40_49_infectada',
+        'populacao_50_59_infectada',
+        'populacao_60_69_infectada',
+        'populacao_70_infectada',
+    )
     list_filter = [
         'uf__sigla'
     ]
@@ -79,6 +57,9 @@ class MunicipioAdmin(admin.ModelAdmin):
         'bairros',
     )
 class UFAdmin(admin.ModelAdmin):
+    readonly_fields = (
+        'id',
+    )
     list_display = [
         'id','sigla','nome'
     ]
@@ -87,10 +68,10 @@ class UFAdmin(admin.ModelAdmin):
 admin.site.register(UF,UFAdmin)
 admin.site.register(Municipio,MunicipioAdmin)
 admin.site.register(Bairro)
-admin.site.register(InstituicaoDeSaude,InstituicaoDeSaudeAdmin)
+admin.site.register(InstituicaoDeSaude)
 admin.site.register(RegistoDeCasosSuspeitos)
-admin.site.register(RegistoDeCasosConfirmados)
-admin.site.register(RegistoDeCasosObitos)
-admin.site.register(RegistoDeCasosCurados)
-admin.site.register(RegistoDeCasosGraves)
+admin.site.register(RegistoDeCasoConfirmado)
+admin.site.register(RegistoDeCasoObito)
+admin.site.register(RegistoDeCasoCurado)
+admin.site.register(RegistoDeCasoGrave)
 admin.site.register(RegistoDeRecursosEmSaude)

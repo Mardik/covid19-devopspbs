@@ -6,138 +6,167 @@ class RegistoDeCasosSuspeitos(models.Model):
     #Listas
 
     #Atributos do Model
-    quantidade = models.IntegerField(verbose_name='Quantidade de novos casos:')
+    quantidade = models.IntegerField(verbose_name='Quantidade de casos suspeitos no momento:')
     created = models.DateTimeField(default=timezone.now, verbose_name='Data de Cadastro:')
     #Atributos de Relacionamentos
-
+    municipio = models.ForeignKey('Municipio', verbose_name='Municipio:',on_delete=models.PROTECT)
     #Metodos
 
     #Meta dados
     class Meta:
         verbose_name = 'Registro de Casos Suspeitos'
-        verbose_name_plural = 'Registros de Casos Suspeitos'
+        verbose_name_plural = 'Registro de Casos Suspeitos'
 
     #Representação textual
     def __str__(self):
-        return "%s / %s" % (self.quantidade, self.created)
+        return "%s - %s / %s" % (self.municipio.uf.sigla,self.municipio.nome, self.created)
 
 #Registo de Casos Confirmados
-class RegistoDeCasosConfirmados(models.Model):
+class RegistoDeCasoConfirmado(models.Model):
     #Listas
+    GRUPO_POPULACIONAL = [
+        (1,'populacao_00_04'),
+        (2,'populacao_05_09'),
+        (3,'populacao_10_14'),
+        (4,'populacao_15_19'),
+        (5,'populacao_20_24'),
+        (6,'populacao_25_29'),
+        (7,'populacao_30_39'),
+        (8,'populacao_40_49'),
+        (9,'populacao_50_59'),
+        (10,'populacao_60_69'),
+        (11,'populacao_70'),
+    ]
 
     #Atributos do Model
-    quantidade = models.IntegerField(verbose_name='Quantidade de novos caso:')
+    grupo_populacional = models.IntegerField(choices=GRUPO_POPULACIONAL, default=0)
     created = models.DateTimeField(default=timezone.now, verbose_name='Data de Cadastro:')
     #Atributos de Relacionamentos
-
+    municipio = models.ForeignKey('Municipio', verbose_name='Municipio:',on_delete=models.PROTECT)
     #Metodos
 
     #Meta dados
     class Meta:
-        verbose_name = 'Registro de Casos Confirmados'
+        verbose_name = 'Registro de Caso Confirmado'
         verbose_name_plural = 'Registros de Casos Confirmados'
 
     #Representação textual
     def __str__(self):
-        return "%s / %s" % (self.quantidade, self.created)
+        return "%s - %s / %s" % (self.municipio.uf.sigla,self.municipio.nome, self.created)
 
 #Registo de Casos Obitos
-class RegistoDeCasosObitos(models.Model):
+class RegistoDeCasoObito(models.Model):
     #Listas
+    GRUPO_POPULACIONAL = [
+        (1,'populacao_00_04'),
+        (2,'populacao_05_09'),
+        (3,'populacao_10_14'),
+        (4,'populacao_15_19'),
+        (5,'populacao_20_24'),
+        (6,'populacao_25_29'),
+        (7,'populacao_30_39'),
+        (8,'populacao_40_49'),
+        (9,'populacao_50_59'),
+        (10,'populacao_60_69'),
+        (11,'populacao_70'),
+    ]
 
     #Atributos do Model
-    quantidade = models.IntegerField(verbose_name='Quantidade de novos caso:')
+    grupo_populacional = models.IntegerField(choices=GRUPO_POPULACIONAL, default=0)
     created = models.DateTimeField(default=timezone.now, verbose_name='Data de Cadastro:')
     #Atributos de Relacionamentos
-
-    #Metodos
+    municipio = models.ForeignKey('Municipio', verbose_name='Municipio:',on_delete=models.PROTECT)
 
     #Meta dados
     class Meta:
-        verbose_name = 'Registro de Casos Obitos'
+        verbose_name = 'Registro de Caso Obito'
         verbose_name_plural = 'Registros de Casos Obitos'
 
     #Representação textual
     def __str__(self):
-        return "%s / %s" % (self.quantidade, self.created)
+         return "%s - %s / %s" % (self.municipio.uf.sigla,self.municipio.nome, self.created)
 
 #Registo de Casos Curados
-class RegistoDeCasosCurados(models.Model):
+class RegistoDeCasoCurado(models.Model):
     #Listas
 
+    GRUPO_POPULACIONAL = [
+        (1,'populacao_00_04'),
+        (2,'populacao_05_09'),
+        (3,'populacao_10_14'),
+        (4,'populacao_15_19'),
+        (5,'populacao_20_24'),
+        (6,'populacao_25_29'),
+        (7,'populacao_30_39'),
+        (8,'populacao_40_49'),
+        (9,'populacao_50_59'),
+        (10,'populacao_60_69'),
+        (11,'populacao_70'),
+    ]
+
     #Atributos do Model
-    quantidade = models.IntegerField(verbose_name='Quantidade de novos caso:')
+    grupo_populacional = models.IntegerField(choices=GRUPO_POPULACIONAL, default=0)
     created = models.DateTimeField(default=timezone.now, verbose_name='Data de Cadastro:')
     #Atributos de Relacionamentos
-
+    municipio = models.ForeignKey('Municipio', verbose_name='Municipio:',on_delete=models.PROTECT)
     #Metodos
 
     #Meta dados
     class Meta:
-        verbose_name = 'Registro de Casos Curados'
-        verbose_name_plural = 'Registros de Casos Curados'
+        verbose_name = 'Registro de Caso de Curado:'
+        verbose_name_plural = 'Registros de Casos de Curas:'
 
     #Representação textual
     def __str__(self):
-        return "%s / %s" % (self.quantidade, self.created)
+         return "%s - %s / %s" % (self.municipio.uf.sigla,self.municipio.nome, self.created)
 
 #Registo de Casos Graves
-class RegistoDeCasosGraves(models.Model):
+class RegistoDeCasoGrave(models.Model):
     #Listas
+    GRUPO_POPULACIONAL = [
+        (1,'populacao_00_04'),
+        (2,'populacao_05_09'),
+        (3,'populacao_10_14'),
+        (4,'populacao_15_19'),
+        (5,'populacao_20_24'),
+        (6,'populacao_25_29'),
+        (7,'populacao_30_39'),
+        (8,'populacao_40_49'),
+        (9,'populacao_50_59'),
+        (10,'populacao_60_69'),
+        (11,'populacao_70'),
+    ]
 
     #Atributos do Model
-    quantidade = models.IntegerField(verbose_name='Quantidade de novos caso:')
+    grupo_populacional = models.IntegerField(choices=GRUPO_POPULACIONAL, default=0)
     created = models.DateTimeField(default=timezone.now, verbose_name='Data de Cadastro:')
     #Atributos de Relacionamentos
-
+    municipio = models.ForeignKey('Municipio', verbose_name='Municipio:',on_delete=models.PROTECT)
     #Metodos
 
     #Meta dados
     class Meta:
-        verbose_name = 'Registro de Casos Graves'
+        verbose_name = 'Registro de Caso Grave'
         verbose_name_plural = 'Registros de Casos Graves'
 
     #Representação textual
     def __str__(self):
-        return "%s / %s" % (self.quantidade, self.created)
-"""
-#Registo Populacional
-class RegistoPopulacional(models.Model):
-    #Listas
-
-    #Atributos do Model
-    populacao_total = models.BigIntegerField()
-    populacao_grupo_de_risco = models.BigIntegerField()
-    populacao_idosos = models.BigIntegerField()
-    populacao_adultos = models.BigIntegerField()
-    populacao_jovens = models.BigIntegerField()
-    populacao_infantil = models.BigIntegerField()
-
-    #Atributos de Relacionamentos
-
-    #Metodos
-
-    #Meta dados
-    class Meta:
-        verbose_name = 'Registro Populacional'
-        verbose_name_plural = 'Registros de Populacionais'
-
-    #Representação textual
-    def __str__(self):
-        return "Registro Populacional"
-"""
+        return "%s - %s / %s" % (self.municipio.uf.sigla,self.municipio.nome, self.created)
 
 #Registo de Recursos em Saúde
-class RegistoDeRecursosEmSaude(models.Model):
+class RegistoDeRecursosEmSaude(models.Model):    
+
     #Listas
     TIPO_DE_RECURSO = [
         (0,'LEITO COVID-19'),
     ]
     #Atributos do Model
     tipo_de_recurso = models.IntegerField(choices=TIPO_DE_RECURSO, default=0)
-    quantidade = models.IntegerField()
+    quantidade_total = models.IntegerField(verbose_name='Quantidade Total do Recurso:')
+    quantidade_disponivel = models.IntegerField(verbose_name='Quantidade do Recurso Disponivel no Momento:')
     created = models.DateTimeField(default=timezone.now, verbose_name='Data de Registro:')
     #Atributos de Relacionamentos
+    instituicao = models.ForeignKey('InstituicaoDeSaude', verbose_name='Instituição de Saúde:',on_delete=models.PROTECT)
 
     #Metodos
 
@@ -148,7 +177,14 @@ class RegistoDeRecursosEmSaude(models.Model):
 
     #Representação textual
     def __str__(self):
-        return "%s - %s / %s" % (self.municipio ,self.quantidade, self.created)
+        return "%s - %s - %s - %s / %s - %s" % (
+                                    self.instituicao.municipio.uf.sigla, 
+                                    self.instituicao.municipio.nome,
+                                    self.instituicao.nome,
+                                    self.quantidade_total, 
+                                    self.quantidade_disponivel,
+                                    self.created,
+                                )
 
 #Instituições de Saúde
 class InstituicaoDeSaude(models.Model):
@@ -160,10 +196,9 @@ class InstituicaoDeSaude(models.Model):
     #Atributos do Model
     nome = models.CharField(max_length=200, verbose_name='Nome:')
     tipo_de_instituicao = models.IntegerField(choices=TIPO_DE_INSTITUICAO, default=0)
-    bairro = models.ForeignKey('Bairro', verbose_name='Bairro:',on_delete=models.PROTECT)
     endereço = models.CharField(max_length=150, verbose_name='Endereço:')
     #Atributos de Relacionamentos
-    registrosDeRecursos = models.ManyToManyField(RegistoDeRecursosEmSaude)
+    municipio = models.ForeignKey('Municipio', verbose_name='Municipio:',on_delete=models.PROTECT)
     #Metodos
 
     #Meta dados
@@ -189,7 +224,6 @@ class Bairro(models.Model):
     def __str__(self):
         return "%s" % (self.nome)
 
-
 #Unidade da Municipio
 class Municipio(models.Model):
     #Listas
@@ -208,32 +242,89 @@ class Municipio(models.Model):
     populacao_40_49 = models.BigIntegerField(default=0)
     populacao_50_59 = models.BigIntegerField(default=0)
     populacao_60_69 = models.BigIntegerField(default=0)
-    populacao_70 = models.BigIntegerField(default=0)
-    
+    populacao_70 = models.BigIntegerField(default=0)    
 
     #Atributos de Relacionamentos
     uf = models.ForeignKey('UF', verbose_name='UF:',on_delete=models.PROTECT)
-    registroDeCasosSuspeitos = models.ManyToManyField(RegistoDeCasosSuspeitos)
-    registroDeCasosConfirmados = models.ManyToManyField(RegistoDeCasosConfirmados)
-    registroDeCasosGraves = models.ManyToManyField(RegistoDeCasosGraves)
-    registroDeCasosObitos = models.ManyToManyField(RegistoDeCasosObitos)
-    registroDeCasosCurados = models.ManyToManyField(RegistoDeCasosCurados)
-    instituicoesDeSaude = models.ManyToManyField(InstituicaoDeSaude)
-    bairros = models.ManyToManyField(Bairro)
     #Metodos
-    #def populacao_grupo_de_risco(self):
+
     def populacao_idosos(self):
-        return populacao_60_69 + populacao_70
+        return (self.populacao_60_69 + 
+                self.populacao_70)
     def populacao_adultos(self):
-        return (populacao_20_24+
-                populacao_25_29+
-                populacao_30_39+
-                populacao_40_49+
-                populacao_50_59)
+        return (self.populacao_20_24+
+                self.populacao_25_29+
+                self.populacao_30_39+
+                self.populacao_40_49+
+                self.populacao_50_59)
     def populacao_jovens(self):
-        return populacao_10_14+populacao_15_19
+        return  (self.populacao_10_14+ 
+                self.populacao_15_19)
     def populacao_infantil(self):
-        return populacao_00_04+populacao_05_09
+        return (self.populacao_00_04+ 
+                self.populacao_05_09)
+
+    def populacao_00_04_infectada(self):
+        return self.registodecasoconfirmado_set.all().filter(grupo_populacional=1).count()
+    def populacao_05_09_infectada(self):
+        return self.registodecasoconfirmado_set.all().filter(grupo_populacional=2).count()
+    def populacao_10_14_infectada(self):
+        return self.registodecasoconfirmado_set.all().filter(grupo_populacional=3).count()
+    def populacao_15_19_infectada(self):
+        return self.registodecasoconfirmado_set.all().filter(grupo_populacional=4).count()
+    def populacao_20_24_infectada(self):
+        return self.registodecasoconfirmado_set.all().filter(grupo_populacional=5).count()
+    def populacao_25_29_infectada(self):
+        return self.registodecasoconfirmado_set.all().filter(grupo_populacional=6).count()
+    def populacao_30_39_infectada(self):
+        return self.registodecasoconfirmado_set.all().filter(grupo_populacional=7).count()
+    def populacao_40_49_infectada(self):
+        return self.registodecasoconfirmado_set.all().filter(grupo_populacional=8).count()
+    def populacao_50_59_infectada(self):
+        return self.registodecasoconfirmado_set.all().filter(grupo_populacional=9).count()
+    def populacao_60_69_infectada(self):
+        return self.registodecasoconfirmado_set.all().filter(grupo_populacional=10).count()
+    def populacao_70_infectada(self):
+        return self.registodecasoconfirmado_set.all().filter(grupo_populacional=11).count()
+    def populacao_total_infectada(self):
+        return (
+                self.populacao_00_04_infectada()+ 
+                self.populacao_05_09_infectada()+
+                self.populacao_10_14_infectada()+ 
+                self.populacao_15_19_infectada()+  
+                self.populacao_20_24_infectada()+
+                self.populacao_25_29_infectada()+
+                self.populacao_30_39_infectada()+
+                self.populacao_40_49_infectada()+
+                self.populacao_50_59_infectada()+
+                self.populacao_60_69_infectada()+ 
+                self.populacao_70_infectada()
+            )
+    def populacao_idosos_infectada(self):
+        return (
+                self.populacao_60_69_infectada() + 
+                self.populacao_70_infectada()
+                )
+
+    def populacao_adultos_infectada(self):
+        return (
+                self.populacao_20_24_infectada()+
+                self.populacao_25_29_infectada()+
+                self.populacao_30_39_infectada()+
+                self.populacao_40_49_infectada()+
+                self.populacao_50_59_infectada()
+                )
+
+    def populacao_jovens_infectada(self):
+        return  (
+                self.populacao_10_14_infectada()+ 
+                self.populacao_15_19_infectada()
+                )
+    def populacao_infantil_infectada(self):
+        return (
+                self.populacao_00_04_infectada()+ 
+                self.populacao_05_09_infectada()
+                )
 
     #Meta dados
     class Meta:
