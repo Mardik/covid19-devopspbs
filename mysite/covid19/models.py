@@ -248,83 +248,170 @@ class Municipio(models.Model):
     uf = models.ForeignKey('UF', verbose_name='UF:',on_delete=models.PROTECT)
     #Metodos
 
+    #Métodos caculated fields sobre a população em geral
+        
+    @property
     def populacao_idosos(self):
         return (self.populacao_60_69 + 
                 self.populacao_70)
+        
+    @property
     def populacao_adultos(self):
         return (self.populacao_20_24+
                 self.populacao_25_29+
                 self.populacao_30_39+
                 self.populacao_40_49+
                 self.populacao_50_59)
+        
+    @property
     def populacao_jovens(self):
         return  (self.populacao_10_14+ 
                 self.populacao_15_19)
+        
+    @property
     def populacao_infantil(self):
         return (self.populacao_00_04+ 
                 self.populacao_05_09)
 
+    #Métodos calculated fiedls sobre a população infectada
+        
+    @property
     def populacao_00_04_infectada(self):
         return self.registodecasoconfirmado_set.all().filter(grupo_populacional=1).count()
+        
+    @property
     def populacao_05_09_infectada(self):
         return self.registodecasoconfirmado_set.all().filter(grupo_populacional=2).count()
+        
+    @property
     def populacao_10_14_infectada(self):
         return self.registodecasoconfirmado_set.all().filter(grupo_populacional=3).count()
+        
+    @property
     def populacao_15_19_infectada(self):
         return self.registodecasoconfirmado_set.all().filter(grupo_populacional=4).count()
+        
+    @property
     def populacao_20_24_infectada(self):
         return self.registodecasoconfirmado_set.all().filter(grupo_populacional=5).count()
+        
+    @property
     def populacao_25_29_infectada(self):
         return self.registodecasoconfirmado_set.all().filter(grupo_populacional=6).count()
+        
+    @property
     def populacao_30_39_infectada(self):
         return self.registodecasoconfirmado_set.all().filter(grupo_populacional=7).count()
+        
+    @property
     def populacao_40_49_infectada(self):
         return self.registodecasoconfirmado_set.all().filter(grupo_populacional=8).count()
+        
+    @property
     def populacao_50_59_infectada(self):
         return self.registodecasoconfirmado_set.all().filter(grupo_populacional=9).count()
+    
+    @property
     def populacao_60_69_infectada(self):
         return self.registodecasoconfirmado_set.all().filter(grupo_populacional=10).count()
+    
+    @property
     def populacao_70_infectada(self):
         return self.registodecasoconfirmado_set.all().filter(grupo_populacional=11).count()
+
+    @property
     def populacao_total_infectada(self):
         return (
-                self.populacao_00_04_infectada()+ 
-                self.populacao_05_09_infectada()+
-                self.populacao_10_14_infectada()+ 
-                self.populacao_15_19_infectada()+  
-                self.populacao_20_24_infectada()+
-                self.populacao_25_29_infectada()+
-                self.populacao_30_39_infectada()+
-                self.populacao_40_49_infectada()+
-                self.populacao_50_59_infectada()+
-                self.populacao_60_69_infectada()+ 
-                self.populacao_70_infectada()
+                self.populacao_00_04_infectada+ 
+                self.populacao_05_09_infectada+
+                self.populacao_10_14_infectada+ 
+                self.populacao_15_19_infectada+  
+                self.populacao_20_24_infectada+
+                self.populacao_25_29_infectada+
+                self.populacao_30_39_infectada+
+                self.populacao_40_49_infectada+
+                self.populacao_50_59_infectada+
+                self.populacao_60_69_infectada+ 
+                self.populacao_70_infectada
             )
+
+    @property        
     def populacao_idosos_infectada(self):
         return (
-                self.populacao_60_69_infectada() + 
-                self.populacao_70_infectada()
+                self.populacao_60_69_infectada + 
+                self.populacao_70_infectada
                 )
 
+    @property
     def populacao_adultos_infectada(self):
         return (
-                self.populacao_20_24_infectada()+
-                self.populacao_25_29_infectada()+
-                self.populacao_30_39_infectada()+
-                self.populacao_40_49_infectada()+
-                self.populacao_50_59_infectada()
+                self.populacao_20_24_infectada+
+                self.populacao_25_29_infectada+
+                self.populacao_30_39_infectada+
+                self.populacao_40_49_infectada+
+                self.populacao_50_59_infectada
                 )
 
+    @property
     def populacao_jovens_infectada(self):
         return  (
-                self.populacao_10_14_infectada()+ 
-                self.populacao_15_19_infectada()
+                self.populacao_10_14_infectada+ 
+                self.populacao_15_19_infectada
                 )
+
+    @property
     def populacao_infantil_infectada(self):
         return (
-                self.populacao_00_04_infectada()+ 
-                self.populacao_05_09_infectada()
+                self.populacao_00_04_infectada+ 
+                self.populacao_05_09_infectada
                 )
+    
+    @property
+    def populacao_infectada_acumulado_diaria(self):
+        return self.registodecasoconfirmado_set.all().count()
+
+    @property
+    def populacao_infectada_total(self):
+        return self.registodecasoconfirmado_set.all().count()
+
+    #Métodos calculated fields sobre a população sob suspeita
+    @property
+    def populacao_sob_suspeita_total(self):
+        return self.registodecasossuspeitos_set.all().count() 
+    
+    #Método calculated fields sobre a população recuperada/curada
+    @property
+    def populacao_curada_acumulado_diario(self):
+        return self.registodecasocurado_set.all().count()
+
+    @property
+    def populacao_curada_total(self):
+        return self.registodecasocurado_set.all().count()
+    
+    # Peço desculpas pela, mais foi a melhor referânecia que encontrei.
+    #Método calculated fields sobre a população que veio a obito.
+    @property
+    def populacao_obito_acumulado_diario(self):
+        return self.registodecasoobito_set.all().count()
+
+    @property
+    def populacao_obito_totral(self):
+        return self.registodecasoobito_set.all().count()
+
+    #Métodos calculated fields sobe a população em geral infectada
+    # baeado no modelo SIR
+        
+    @property
+    def populacao_susceptiveis(self):
+        pass
+        
+    @property
+    def populacao_infecciosos(self):
+        pass
+    
+    @property
+    def populacao_removidos(self):
+        pass
 
     #Meta dados
     class Meta:

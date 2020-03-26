@@ -23,6 +23,7 @@ class MunicipioAdmin(admin.ModelAdmin):
     readonly_fields = (
         'id',
         'populacao_total',
+        'populacao_projetada',
         'populacao_idosos',
         'populacao_adultos',
         'populacao_jovens',
