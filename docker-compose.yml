@@ -4,16 +4,16 @@ services:
   django:
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: backend.Dockerfile
     ports:
       - "8000:8000"
     volumes:
-      - ./:/app/
-    #depends_on:
-    #  - postgres-db
+      - ./mysite:/app/
+    depends_on:
+      - postgres-db
     #  - pgadmin
     networks:
-      - dev-grc-networking
+      - dev-grc-networking          
 
   postgres-db:
     image: postgres:11

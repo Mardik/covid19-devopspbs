@@ -2,3 +2,5 @@ django >= 3
 psycopg2
 requests
 djangorestframework
+django-cors-headers
+django-environ

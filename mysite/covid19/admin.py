@@ -9,6 +9,30 @@ from .models import *
 #Admin classe do model Municipio contemplando a exição tabular para
 #registro de casos supeitos e excluindo o campo registros de casos supeitos
 #do change form.
+
+class RegistoDeCasoConfirmadoAdmin(admin.ModelAdmin):
+    list_display = [
+        'municipio',
+        'sexo',
+        'grupo_populacional',
+        'created',
+    ]
+    list_filter = [
+        'municipio__nome'
+    ]
+    raw_id_fields = [('municipio')]
+
+class RegistoDeCasosSuspeitosAdmin(admin.ModelAdmin):
+    list_display = [
+        'municipio',
+        'quantidade',
+        'created',
+    ]
+    list_filter = [
+        'municipio__nome'
+    ]
+    raw_id_fields = [('municipio')]
+
 class MunicipioAdmin(admin.ModelAdmin):
     search_fields = ['nome']
     list_display = [
@@ -70,8 +94,8 @@ admin.site.register(UF,UFAdmin)
 admin.site.register(Municipio,MunicipioAdmin)
 admin.site.register(Bairro)
 admin.site.register(InstituicaoDeSaude)
-admin.site.register(RegistoDeCasosSuspeitos)
-admin.site.register(RegistoDeCasoConfirmado)
+admin.site.register(RegistoDeCasoConfirmado,RegistoDeCasoConfirmadoAdmin)
+admin.site.register(RegistoDeCasosSuspeitos,RegistoDeCasosSuspeitosAdmin)
 admin.site.register(RegistoDeCasoObito)
 admin.site.register(RegistoDeCasoCurado)
 admin.site.register(RegistoDeCasoGrave)

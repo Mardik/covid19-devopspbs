@@ -12,9 +12,6 @@ UFS_IDS = UF.objects.all().order_by('id').values_list('id', flat=True)
 
 #Função que vai extrair dados populacionais dos municipios das UF's
 # para alimentar o modelo Municipios.
-# filds alimentados:
-#
-
 
 #Sabemos que essa função precisa ser otimizada, e tem um possivel erro,
 # que é qnd uma UF tem dois municipios com o mesmo nome, mais 
@@ -88,6 +85,6 @@ def import_ibge_uf_municipios_dados_populacionais(base_path,UF_ID):
 #    import_ibge_uf_municipios_dados_populacionais(base_path,UF_ID)
 
 #Intera sobre uma UF especifica
-UF_ID = 15
+#UF_ID = 15
 base_path = BASE_PATH.format(UF_ID=UF_ID)
 import_ibge_uf_municipios_dados_populacionais(base_path,UF_ID)

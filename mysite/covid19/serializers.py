@@ -6,6 +6,7 @@ class MunicipioSerializer(serializers.ModelSerializer):
     class Meta:
         model = Municipio
         fields = (
+            'id',
             'nome',
             'uf',
             'populacao_total',
@@ -30,8 +31,7 @@ class MunicipioSerializer(serializers.ModelSerializer):
             'populacao_adultos_infectada',
             'populacao_jovens_infectada',
             'populacao_infantil_infectada',
-            'populacao_infectada_acumulado_diaria',
-            'populacao_infectada_total',
+            #'populacao_infectada_acumulado_diaria',
             'populacao_00_04_infectada',
             'populacao_05_09_infectada',
             'populacao_10_14_infectada',
@@ -47,7 +47,7 @@ class MunicipioSerializer(serializers.ModelSerializer):
             #'populacao_curada_acumulado_diario',
             'populacao_curada_total',
             #'populacao_obito_acumulado_diario',
-            'populacao_obito_totral',
+            'populacao_obito_total',
         )
 
 class UFSerializer(serializers.ModelSerializer):

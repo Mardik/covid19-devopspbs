@@ -1,6 +1,6 @@
 Repositorio do projeto DevOpsPBS Covid-19, o objetivo to projeto é criar um dash board com dados importanteste sobre a epidemia do covid-19 e de recursos em saúde, e monitorlos diaramente, para ajudar
 na tomada de decisões dos getores municipais.
-
+Back-end:
 Start in standalone mode:
 - `docker-compose run --service-ports --rm django /bin/bash`
 
@@ -26,3 +26,4 @@ E.G.
 
 Docker-compose:
 https://medium.com/@renato.groffe/postgresql-pgadmin-4-docker-compose-montando-rapidamente-um-ambiente-para-uso-55a2ab230b89
+

@@ -74,15 +74,16 @@ def import_uf_municipios_ibge(uf):
         municipio.save()
         #print(municipio)
     
-
+"""
 #Executar
 #Importa dados da UF's e gera uma lista de objetos
 # UF que será utilzada na importação dos Municipios.
-#import_ufs_ibge(ufs_data)
+"""
+import_ufs_ibge(ufs_data)
 #Importa os municpios de cada estado.
-#for uf in ufs_list:
-#    import_uf_municipios_ibge(uf)
+for uf in ufs_list:
+    import_uf_municipios_ibge(uf)
 
 #Se preferir importar dados de apenas uma UF
-uf_instance = import_uf_ibge(uf_data)
-import_uf_municipios_ibge(uf_instance)
+#uf_instance = import_uf_ibge(uf_data)
+#import_uf_municipios_ibge(uf_instance)
