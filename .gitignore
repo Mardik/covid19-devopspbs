@@ -7,8 +7,8 @@ datadir
 
 .DS_Store
 node_modules
-/dist
-
+dist
+deployment
 # local env files
 .env.local
 .env.*.local

@@ -11,7 +11,7 @@ from .models import *
 from  .serializers import *
 # Create your views here.
 
-
+"""
 class HomePageView(View):
     def get(self, request, *args, **kwargs):
         return render(request, 'covid19/charts.html')
@@ -19,6 +19,7 @@ class HomePageView(View):
 class IndexPageView(View):
     def get(self, request, *args, **kwargs):
         return render(request, 'covid19/index.html')
+"""
 
 class MunicipiosList(APIView):
     def get(self,request):

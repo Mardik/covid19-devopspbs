@@ -4,3 +4,4 @@ requests
 djangorestframework
 django-cors-headers
 django-environ
+coreapi
