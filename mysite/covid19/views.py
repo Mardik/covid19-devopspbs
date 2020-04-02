@@ -21,23 +21,10 @@ class IndexPageView(View):
         return render(request, 'covid19/index.html')
 """
 
-class MunicipiosList(APIView):
-    def get(self,request):
-        municipios = Municipio.objects.all()
-        data = MunicipioSerializer(municipios,many=True).data
-        return Response(data)
-
-
-class MunicipioPanoramaDataDetail(APIView):
-    def get(self,request, uf_pk, pk):
-        municipio = Municipio.objects.filter(Q(uf__id=uf_pk) & Q(id=pk))
-        data = MunicipioSerializer(municipio,many=True).data
-        return Response(data)
-
 # Views que retorna os CasosSuspeitos por data, evolução pontual
 class MunicipioCasosSuspeitosLineChartDetail(APIView):
-    def get(self,request, uf_pk, pk):
-        municipio = Municipio.objects.filter(Q(uf__id=uf_pk) & Q(id=pk)).first()
+    def get(self,request, pk):
+        municipio = Municipio.objects.filter(Q(id=pk)).first()
         registros_c_list = municipio.registodecasossuspeitos_set.all().values_list('created','quantidade').order_by('created')
         labels = []
         data = []
@@ -64,8 +51,8 @@ class MunicipioCasosSuspeitosLineChartDetail(APIView):
 
 # Views que retorna os casos confirmados por data, evolução pontual
 class MunicipioCasosConfirmadosLineChartDetail(APIView):
-    def get(self,request, uf_pk, pk):
-        municipio = Municipio.objects.filter(Q(uf__id=uf_pk) & Q(id=pk)).first()
+    def get(self,request, pk):
+        municipio = Municipio.objects.filter(Q(id=pk)).first()
         registros_c_list = municipio.registodecasoconfirmado_set.all().values_list('created').annotate(count=Count('id')).order_by('created')
         labels = []
         data = []
@@ -92,8 +79,8 @@ class MunicipioCasosConfirmadosLineChartDetail(APIView):
 
 # Views que retorna os casos confirmados por data, evolução acumulada
 class MunicipioCasosConfirmadosAcumaldoLineChartDetail(APIView):
-    def get(self,request, uf_pk, pk):
-        municipio = Municipio.objects.filter(Q(uf__id=uf_pk) & Q(id=pk)).first()
+    def get(self,request, pk):
+        municipio = Municipio.objects.filter(Q(id=pk)).first()
         registros_c_list = municipio.registodecasoconfirmado_set.all().values_list('created').annotate(count=Count('id')).order_by('created')
         labels = []
         data = []
@@ -123,8 +110,8 @@ class MunicipioCasosConfirmadosAcumaldoLineChartDetail(APIView):
         return Response(data)
 
 class MunicipioCasosConfirmadosGruposPopulacionalHBarChartDetail(APIView):
-    def get(self,request, uf_pk, pk):
-        municipio = Municipio.objects.filter(Q(uf__id=uf_pk) & Q(id=pk)).first()
+    def get(self,request, pk):
+        municipio = Municipio.objects.filter(Q(id=pk)).first()
         labels = []
         data_1 = []
         data_2 = [
@@ -173,8 +160,8 @@ class MunicipioCasosConfirmadosGruposPopulacionalHBarChartDetail(APIView):
 
 # Views que retorna os Casos de Obitos por data, evolução pontual
 class MunicipioCasosObitosLineChartDetail(APIView):
-    def get(self,request, uf_pk, pk):
-        municipio = Municipio.objects.filter(Q(uf__id=uf_pk) & Q(id=pk)).first()
+    def get(self,request, pk):
+        municipio = Municipio.objects.filter(Q(id=pk)).first()
         registros_c_list = municipio.registodecasoobito_set.all().values_list('created').annotate(count=Count('id')).order_by('created')
         labels = []
         data = []
@@ -201,8 +188,8 @@ class MunicipioCasosObitosLineChartDetail(APIView):
 
 # Views que retorna os Casos de Obitos por data, evolução acumulada
 class MunicipioCasosObitosAcumaldoLineChartDetail(APIView):
-    def get(self,request, uf_pk, pk):
-        municipio = Municipio.objects.filter(Q(uf__id=uf_pk) & Q(id=pk)).first()
+    def get(self,request, pk):
+        municipio = Municipio.objects.filter(Q(id=pk)).first()
         registros_c_list = municipio.registodecasoobito_set.all().values_list('created').annotate(count=Count('id')).order_by('created')
         labels = []
         data = []
@@ -233,8 +220,8 @@ class MunicipioCasosObitosAcumaldoLineChartDetail(APIView):
 
 # Views que retorna os Casos de Curados por data, evolução pontual
 class MunicipioCasosCuradosLineChartDetail(APIView):
-    def get(self,request, uf_pk, pk):
-        municipio = Municipio.objects.filter(Q(uf__id=uf_pk) & Q(id=pk)).first()
+    def get(self,request, pk):
+        municipio = Municipio.objects.filter(Q(id=pk)).first()
         registros_c_list = municipio.registodecasocurado_set.all().values_list('created').annotate(count=Count('id')).order_by('created')
         labels = []
         data = []
@@ -261,8 +248,8 @@ class MunicipioCasosCuradosLineChartDetail(APIView):
 
 # Views que retorna os Casos de Curados por data, evolução acumulada
 class MunicipioCasosCuradosAcumaldoLineChartDetail(APIView):
-    def get(self,request, uf_pk, pk):
-        municipio = Municipio.objects.filter(Q(uf__id=uf_pk) & Q(id=pk)).first()
+    def get(self,request, pk):
+        municipio = Municipio.objects.filter(Q(id=pk)).first()
         registros_c_list = municipio.registodecasocurado_set.all().values_list('created').annotate(count=Count('id')).order_by('created')
         labels = []
         data = []
@@ -293,8 +280,8 @@ class MunicipioCasosCuradosAcumaldoLineChartDetail(APIView):
 
 # Views que retorna os Casos de Graves por data, evolução pontual
 class MunicipioCasosGravesLineChartDetail(APIView):
-    def get(self,request, uf_pk, pk):
-        municipio = Municipio.objects.filter(Q(uf__id=uf_pk) & Q(id=pk)).first()
+    def get(self,request, pk):
+        municipio = Municipio.objects.filter(Q(id=pk)).first()
         registros_c_list = municipio.registodecasograve_set.all().values_list('created').annotate(count=Count('id')).order_by('created')
         labels = []
         data = []
@@ -321,8 +308,8 @@ class MunicipioCasosGravesLineChartDetail(APIView):
 
 # Views que retorna os Casos Graves por data, evolução acumulada
 class MunicipioCasosGravesAcumaldoLineChartDetail(APIView):
-    def get(self,request, uf_pk, pk):
-        municipio = Municipio.objects.filter(Q(uf__id=uf_pk) & Q(id=pk)).first()
+    def get(self,request, pk):
+        municipio = Municipio.objects.filter(Q(id=pk)).first()
         registros_c_list = municipio.registodecasograve_set.all().values_list('created').annotate(count=Count('id')).order_by('created')
         labels = []
         data = []
@@ -351,12 +338,70 @@ class MunicipioCasosGravesAcumaldoLineChartDetail(APIView):
         }
         return Response(data)
 
+class MunicipioRegistrosDeCasosGravesList(APIView):
+    def get(self,request, m_pk):
+        registos = RegistoDeCasoGrave.objects.filter(Q(municipio=m_pk))
+        data = RegistoDeCasoGraveSerializer(registos,many=True).data
+        return Response(data)
+
+class MunicipioRegistrosDeCasosCuradosList(APIView):
+    def get(self,request, m_pk):
+        registos = RegistoDeCasoCurado.objects.filter(Q(municipio=m_pk))
+        data = RegistoDeCasoCuradoSerializer(registos,many=True).data
+        return Response(data)
+
+class MunicipioRegistrosDeCasosObitosList(APIView):
+    def get(self,request, m_pk):
+        registos = RegistoDeCasoObito.objects.filter(Q(municipio=m_pk))
+        data = RegistoDeCasoObitoSerializer(registos,many=True).data
+        return Response(data)
+
+class MunicipioRegistrosDeCasosConfirmadosList(APIView):
+    def get(self,request, m_pk):
+        registos = RegistoDeCasoConfirmado.objects.filter(Q(municipio=m_pk))
+        data = RegistoDeCasoConfirmadoSerializer(registos,many=True).data
+        return Response(data)
+
+class MunicipioRegistrosDeCasosSuspeitosList(APIView):
+    def get(self,request, m_pk):
+        registos = RegistoDeCasosSuspeitos.objects.filter(Q(municipio=m_pk))
+        data = RegistoDeCasosSuspeitosSerializer(registos,many=True).data
+        return Response(data)
+
+class MunicipioPanoramaDataDetail(APIView):
+    def get(self,request,pk):
+        municipio = Municipio.objects.filter(Q(id=pk))
+        data = MunicipioSerializer(municipio,many=True).data
+        return Response(data)
+
+class MunicipiosList(APIView):
+    def get(self,request):
+        municipios = Municipio.objects.all()
+        data = MunicipioSerializer(municipios,many=True).data
+        return Response(data)
 
 class UFList(APIView):
     def get(self,request):
         ufs = UF.objects.all()
         data = UFSerializer(ufs,many=True).data
         return Response(data)
+
+class IBGEGruposPopulacionais(APIView):
+    def get(self,request):
+        GRUPO_POPULACIONAL = {    
+        '1':'populacao_00_04',
+        '2':'populacao_05_09',
+        '3':'populacao_10_14',
+        '4':'populacao_15_19',
+        '5':'populacao_20_24',
+        '6':'populacao_25_29',
+        '7':'populacao_30_39',
+        '8':'populacao_40_49',
+        '9':'populacao_50_59',
+        '10':'populacao_60_69',
+        '11':'populacao_70',
+        }
+        return Response(GRUPO_POPULACIONAL)
 
 class UFPanoramaDatasList(APIView):
     pass
@@ -366,17 +411,3 @@ class UFPanoramaChartCasosSuspeitosList(APIView):
 
 class UFPanoramaChartCasosConfirmadosList(APIView):
     pass
-
-
-#Exemplo Class
-class ChartData(APIView):
-    authentication_classes = []
-    permission_classes = []
-
-    def get(self, request, format=None):
-        data = {
-            "labels": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
-            "data": [12, 19, 3, 5, 2, 3, 10],
-        }   
-
-        return Response(data)

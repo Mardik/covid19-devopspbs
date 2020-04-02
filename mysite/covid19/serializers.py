@@ -2,6 +2,31 @@ from rest_framework import serializers
 
 from .models import *
 
+class RegistoDeCasoGraveSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = RegistoDeCasoGrave
+        fields = '__all__'
+
+class RegistoDeCasoCuradoSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = RegistoDeCasoCurado
+        fields = '__all__'
+
+class RegistoDeCasoObitoSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = RegistoDeCasoObito
+        fields = '__all__'
+
+class RegistoDeCasoConfirmadoSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = RegistoDeCasoConfirmado
+        fields = '__all__'
+
+class RegistoDeCasosSuspeitosSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = RegistoDeCasosSuspeitos
+        fields = '__all__'    
+
 class MunicipioSerializer(serializers.ModelSerializer):
     class Meta:
         model = Municipio
@@ -31,7 +56,6 @@ class MunicipioSerializer(serializers.ModelSerializer):
             'populacao_adultos_infectada',
             'populacao_jovens_infectada',
             'populacao_infantil_infectada',
-            #'populacao_infectada_acumulado_diaria',
             'populacao_00_04_infectada',
             'populacao_05_09_infectada',
             'populacao_10_14_infectada',
@@ -44,9 +68,7 @@ class MunicipioSerializer(serializers.ModelSerializer):
             'populacao_60_69_infectada',
             'populacao_70_infectada',
             'populacao_sob_suspeita_total',
-            #'populacao_curada_acumulado_diario',
             'populacao_curada_total',
-            #'populacao_obito_acumulado_diario',
             'populacao_obito_total',
         )
 
