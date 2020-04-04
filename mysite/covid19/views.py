@@ -11,6 +11,19 @@ from .models import *
 from  .serializers import *
 # Create your views here.
 
+#utils
+def dynamicColor():
+    r = randint(0, 255)
+    g = randint(0, 255)
+    b = randint(0, 255)
+    return "rgb({},{},{},1)".format(str(r),str(g),str(b))
+
+SEXO = {
+    '0': 'masculino',
+    '1': 'feminino',
+    '2': 'desconhecido',
+}
+
 """
 class HomePageView(View):
     def get(self, request, *args, **kwargs):
@@ -32,21 +45,24 @@ class MunicipioCasosSuspeitosLineChartDetail(APIView):
             labels.append('{0:%d-%m-%Y}'.format(r[0]))
             data.append(r[1])
 
-        data = {
-            "datacollection": {
-            "labels": labels,
-            "datasets": [
-                {
-                    "label": 'Casos Confirmados',
-                    "backgroundColor": '#f87979',
-                    "pointBackgroundColor": 'white',
-                    "borderWidth": 1,
-                    "pointBorderColor": '#249EBF',
-                    "data": data,
+        if data:
+            data = {
+                "datacollection": {
+                "labels": labels,
+                "datasets": [
+                    {
+                        "label": 'Casos Confirmados',
+                        "backgroundColor": dynamicColor(),
+                        "pointBackgroundColor": 'white',
+                        "borderWidth": 1,
+                        "pointBorderColor": '#249EBF',
+                        "data": data,
+                    }
+                ]
                 }
-            ]
             }
-        }
+        else:
+            data = None
         return Response(data)
 
 # Views que retorna os casos confirmados por data, evolução pontual
@@ -60,21 +76,24 @@ class MunicipioCasosConfirmadosLineChartDetail(APIView):
             labels.append('{0:%d-%m-%Y}'.format(r[0]))
             data.append(r[1])
 
-        data = {
-            "datacollection": {
-            "labels": labels,
-            "datasets": [
-                {
-                    "label": 'Casos Confirmados',
-                    "backgroundColor": '#f87979',
-                    "pointBackgroundColor": 'white',
-                    "borderWidth": 1,
-                    "pointBorderColor": '#249EBF',
-                    "data": data,
+        if data:
+            data = {
+                "datacollection": {
+                "labels": labels,
+                "datasets": [
+                    {
+                        "label": 'Casos Confirmados',
+                        "backgroundColor": dynamicColor(),
+                        "pointBackgroundColor": 'white',
+                        "borderWidth": 1,
+                        "pointBorderColor": '#249EBF',
+                        "data": data,
+                    }
+                ]
                 }
-            ]
             }
-        }
+        else:
+            data = None
         return Response(data)
 
 # Views que retorna os casos confirmados por data, evolução acumulada
@@ -92,40 +111,76 @@ class MunicipioCasosConfirmadosAcumaldoLineChartDetail(APIView):
             #data_prova.append(r[1])
             data.append(acumulado)
 
-        data = {
-            "datacollection": {
-            "labels": labels,
-            "datasets": [
-                {
-                    "label": 'Casos Confirmados',
-                    "backgroundColor": '#f87979',
-                    "pointBackgroundColor": 'white',
-                    "borderWidth": 1,
-                    "pointBorderColor": '#249EBF',
-                    "data": data,
+        if data:
+            data = {
+                "datacollection": {
+                "labels": labels,
+                "datasets": [
+                    {
+                        "label": 'Casos Confirmados',
+                        "backgroundColor": dynamicColor(),
+                        "pointBackgroundColor": 'white',
+                        "borderWidth": 1,
+                        "pointBorderColor": '#249EBF',
+                        "data": data,
+                    }
+                ]
                 }
-            ]
             }
-        }
+        else:
+            data = None
         return Response(data)
 
-class MunicipioCasosConfirmadosGruposPopulacionalHBarChartDetail(APIView):
+class MunicipioCasosConfirmadosSegregadosPeloSexoPieChartDetail(APIView):
+    def get(self,request, pk):
+        municipio = Municipio.objects.filter(Q(id=pk)).first()
+        labels = []
+        data = []
+        backgroundColor = []
+
+        for r in range(0,3):
+            labels.append(SEXO[str(r)])
+            data_empty = municipio.registodecasoconfirmado_set.filter(sexo=r).count()
+            data.append(data_empty)
+            backgroundColor.append(dynamicColor())
+
+        if data:
+            data = {
+                "datacollection": {
+                "labels": labels,
+                "datasets": [
+                    {
+                        "label": 'Casos Confirmados',
+                        "backgroundColor": backgroundColor,
+                        "pointBackgroundColor": 'white',
+                        "borderWidth": 1,
+                        "pointBorderColor": '#249EBF',
+                        "data": data,
+                    }
+                ]
+                }
+            }
+        else:
+            data = None
+        return Response(data)    
+
+class MunicipioCasosConfirmadosSegregadosPorIdadeXPopulacaoHBarChartDetail(APIView):
     def get(self,request, pk):
         municipio = Municipio.objects.filter(Q(id=pk)).first()
         labels = []
         data_1 = []
         data_2 = [
-            -municipio.populacao_00_04,
-            -municipio.populacao_05_09,
-            -municipio.populacao_10_14,
-            -municipio.populacao_15_19,
-            -municipio.populacao_20_24,
-            -municipio.populacao_25_29,
-            -municipio.populacao_30_39,
-            -municipio.populacao_40_49,
-            -municipio.populacao_50_59,
-            -municipio.populacao_60_69,
-            -municipio.populacao_70,
+            municipio.populacao_00_04,
+            municipio.populacao_05_09,
+            municipio.populacao_10_14,
+            municipio.populacao_15_19,
+            municipio.populacao_20_24,
+            municipio.populacao_25_29,
+            municipio.populacao_30_39,
+            municipio.populacao_40_49,
+            municipio.populacao_50_59,
+            municipio.populacao_60_69,
+            municipio.populacao_70,
         ]
 
         for r in range(1,12):
@@ -133,29 +188,63 @@ class MunicipioCasosConfirmadosGruposPopulacionalHBarChartDetail(APIView):
             data_empty = municipio.registodecasoconfirmado_set.filter(grupo_populacional=r).count()
             data_1.append(data_empty)
 
-        data = {
-            "datacollection": {
-            "labels": labels,
-            "datasets": [
-                {
-                    "label": 'População por Grupo Etario',
-                    "backgroundColor": '#f87979',
-                    "pointBackgroundColor": 'white',
-                    "borderWidth": 1,
-                    "pointBorderColor": '#249EBF',
-                    "data": data_2,
-                },
-                {
-                    "label": 'População por Grupo Etario Infectada',
-                    "backgroundColor": '#f87979',
-                    "pointBackgroundColor": 'white',
-                    "borderWidth": 1,
-                    "pointBorderColor": '#249EBF',
-                    "data": data_1,
+        if data_1 and data_2:
+            data = {
+                "datacollection": {
+                "labels": labels,
+                "datasets": [
+                    {
+                        "label": 'População por Grupo Etario',
+                        "backgroundColor": dynamicColor(),
+                        "pointBackgroundColor": 'white',
+                        "borderWidth": 1,
+                        "pointBorderColor": '#249EBF',
+                        "data": data_1,
+                    },
+                    {
+                        "label": 'População por Grupo Etario Infectada',
+                        "backgroundColor": '#000000',
+                        "pointBackgroundColor": 'white',
+                        "borderWidth": 1,
+                        "pointBorderColor": '#249EBF',
+                        "data": data_2,
+                    }
+                ]
                 }
-            ]
             }
-        }
+        else:
+            data = None
+        return Response(data)
+
+class MunicipioCasosConfirmadosPorGrupoPopulacionalBarChartDetail(APIView):
+    def get(self,request, pk):
+        municipio = Municipio.objects.filter(Q(id=pk)).first()
+        labels = []
+        data = []
+
+        for r in range(1,12):
+            labels.append(municipio.GRUPO_POPULACIONAL[str(r)])
+            data_empty = municipio.registodecasoconfirmado_set.filter(grupo_populacional=r).count()
+            data.append(data_empty)
+
+        if data:
+            data = {
+                "datacollection": {
+                "labels": labels,
+                "datasets": [
+                    {
+                        "label": 'Casos Confirmados',
+                        "backgroundColor": dynamicColor(),
+                        "pointBackgroundColor": 'white',
+                        "borderWidth": 1,
+                        "pointBorderColor": '#249EBF',
+                        "data": data,
+                    }
+                ]
+                }
+            }
+        else:
+            data = None
         return Response(data)   
 
 # Views que retorna os Casos de Obitos por data, evolução pontual
@@ -175,7 +264,7 @@ class MunicipioCasosObitosLineChartDetail(APIView):
             "datasets": [
                 {
                     "label": 'Casos Confirmados',
-                    "backgroundColor": '#f87979',
+                    "backgroundColor": dynamicColor(),
                     "pointBackgroundColor": 'white',
                     "borderWidth": 1,
                     "pointBorderColor": '#249EBF',
@@ -207,7 +296,7 @@ class MunicipioCasosObitosAcumaldoLineChartDetail(APIView):
             "datasets": [
                 {
                     "label": 'Casos Confirmados',
-                    "backgroundColor": '#f87979',
+                    "backgroundColor": dynamicColor(),
                     "pointBackgroundColor": 'white',
                     "borderWidth": 1,
                     "pointBorderColor": '#249EBF',
@@ -235,7 +324,7 @@ class MunicipioCasosCuradosLineChartDetail(APIView):
             "datasets": [
                 {
                     "label": 'Casos Confirmados',
-                    "backgroundColor": '#f87979',
+                    "backgroundColor": dynamicColor(),
                     "pointBackgroundColor": 'white',
                     "borderWidth": 1,
                     "pointBorderColor": '#249EBF',
@@ -267,7 +356,7 @@ class MunicipioCasosCuradosAcumaldoLineChartDetail(APIView):
             "datasets": [
                 {
                     "label": 'Casos Confirmados',
-                    "backgroundColor": '#f87979',
+                    "backgroundColor": dynamicColor(),
                     "pointBackgroundColor": 'white',
                     "borderWidth": 1,
                     "pointBorderColor": '#249EBF',
@@ -295,7 +384,7 @@ class MunicipioCasosGravesLineChartDetail(APIView):
             "datasets": [
                 {
                     "label": 'Casos Confirmados',
-                    "backgroundColor": '#f87979',
+                    "backgroundColor": dynamicColor(),
                     "pointBackgroundColor": 'white',
                     "borderWidth": 1,
                     "pointBorderColor": '#249EBF',
@@ -327,7 +416,7 @@ class MunicipioCasosGravesAcumaldoLineChartDetail(APIView):
             "datasets": [
                 {
                     "label": 'Casos Confirmados',
-                    "backgroundColor": '#f87979',
+                    "backgroundColor": dynamicColor(),
                     "pointBackgroundColor": 'white',
                     "borderWidth": 1,
                     "pointBorderColor": '#249EBF',
@@ -378,6 +467,209 @@ class MunicipiosList(APIView):
     def get(self,request):
         municipios = Municipio.objects.all()
         data = MunicipioSerializer(municipios,many=True).data
+        return Response(data)
+
+class UFCasosConfirmadosPorCidadeBarChartDetail(APIView):
+    def get(self,request,pk):
+        uf = UF.objects.get(id=pk)
+        data_temp = {}
+        for m in uf.municipio_set.all():
+            totoal_registros = m.registodecasoconfirmado_set.all().count()
+            if totoal_registros:
+                data_temp[m.nome] = totoal_registros
+
+        labels = []
+        data = []
+        acumulado = 0
+        for key in sorted(data_temp, key=data_temp.get, reverse=True):
+            labels.append(key)
+            data.append(data_temp[key])
+
+        if data:
+            data = {
+                "datacollection": {
+                    "labels": labels,
+                    "datasets": [
+                        {
+                            "label": 'Casos Confirmados',
+                            "backgroundColor": dynamicColor(),
+                            "pointBackgroundColor": 'white',
+                            "borderWidth": 1,
+                            "pointBorderColor": '#249EBF',
+                            "data": data,
+                        }
+                    ]
+                }
+            }
+        else:
+            data = None
+
+        return Response(data)
+
+class UFCasosConfirmadosPorGrupoEtarioBarChartDetail(APIView):
+#Casos Confirmados pro grupo etário:
+    def get(self,request,pk):
+        uf = UF.objects.get(id=pk)
+        labels =[    
+            'População de 00a04',
+            'População de 05a09',
+            'População de 10a14',
+            'População de 15a19',
+            'População de 20a24',
+            'População de 25a29',
+            'População de 30a39',
+            'População de 40a49',
+            'População de 50a59',
+            'População de 60a69',
+            'População de 70+',
+        ]
+        data = [0,0,0,0,0,0,0,0,0,0,0]
+        for m in uf.municipio_set.all():
+            data[0] = data[0] + m.populacao_00_04_infectada
+            data[1] = data[1] + m.populacao_05_09_infectada
+            data[2] = data[2] + m.populacao_10_14_infectada 
+            data[3] = data[3] + m.populacao_15_19_infectada 
+            data[4] = data[4] + m.populacao_20_24_infectada 
+            data[5] = data[5] + m.populacao_25_29_infectada 
+            data[6] = data[6] + m.populacao_30_39_infectada 
+            data[7] = data[7] + m.populacao_40_49_infectada 
+            data[8] = data[8] + m.populacao_50_59_infectada 
+            data[9] = data[9] + m.populacao_60_69_infectada
+            data[10] = data[10] + m.populacao_70_infectada
+
+        if data:
+            data = {
+                "datacollection": {
+                "labels": labels,
+                "datasets": [
+                    {
+                        "label": 'Casos Confirmados',
+                        "backgroundColor": dynamicColor(),
+                        "pointBackgroundColor": 'white',
+                        "borderWidth": 1,
+                        "pointBorderColor": '#249EBF',
+                        "data": data,
+                    }
+                ]
+                }
+            }
+        else:
+            data = None
+        return Response(data)
+
+class UFCasosConfirmadosSegregadosPorSexoPieChartDetail(APIView):
+#Casos Confirmados agrupados por sexo
+    def get(self,request,pk):
+        uf = UF.objects.get(id=pk)
+        labels = ['masculino','feiminino','desconhecido']
+        data = [0,0,0]
+        backgroundColor = [dynamicColor(),dynamicColor(),dynamicColor()]
+        for m in uf.municipio_set.all():
+            data[0] += m.registodecasoconfirmado_set.filter(sexo=0).count()
+            data[1] += m.registodecasoconfirmado_set.filter(sexo=1).count()
+            data[2] += m.registodecasoconfirmado_set.filter(sexo=2).count()
+        if data:
+            data = {
+                "datacollection": {
+                "labels": labels,
+                "datasets": [
+                    {
+                        "label": 'Casos Confirmados',
+                        "backgroundColor": backgroundColor,
+                        "pointBackgroundColor": 'white',
+                        "borderWidth": 1,
+                        "pointBorderColor": '#249EBF',
+                        "data": data,
+                    }
+                ]
+                }
+            }
+        else:
+            data = None
+        return Response(data)
+
+class UFCasosConfirmadosAcumaldoLineChartDetail(APIView):
+    def get(self,request,pk):
+        uf = UF.objects.get(id=pk)
+        data_temp = {}
+        for m in uf.municipio_set.all():
+            registros_c_list = m.registodecasoconfirmado_set.all().values_list('created').annotate(count=Count('id')).order_by('created')
+            for r in registros_c_list:
+                if '{0:%d-%m-%Y}'.format(r[0]) in data_temp:
+                    data_temp['{0:%d-%m-%Y}'.format(r[0])] += r[1]
+                else:
+                    data_temp['{0:%d-%m-%Y}'.format(r[0])] = r[1]
+        print(data_temp)
+        labels = []
+        data = []
+        acumulado = 0
+        for key in sorted(data_temp):
+            labels.append(key)
+            acumulado += data_temp[key]
+            data.append(acumulado)
+
+        if data:
+            data = {
+                "datacollection": {
+                "labels": labels,
+                "datasets": [
+                    {
+                        "label": 'Casos Confirmados',
+                        "backgroundColor": dynamicColor(),
+                        "pointBackgroundColor": 'white',
+                        "borderWidth": 1,
+                        "pointBorderColor": '#249EBF',
+                        "data": data,
+                    }
+                ]
+                }
+            }
+        else:
+            data = None
+        return Response(data)
+
+class UFCasosConfirmadosLineChartDetail(APIView):
+    def get(self,request,pk):
+        uf = UF.objects.get(id=pk)
+        data_temp = {}
+        for m in uf.municipio_set.all():
+            registros_c_list = m.registodecasoconfirmado_set.all().values_list('created').annotate(count=Count('id')).order_by('created')
+            for r in registros_c_list:
+                if '{0:%d-%m-%Y}'.format(r[0]) in data_temp:
+                    data_temp['{0:%d-%m-%Y}'.format(r[0])] += r[1]
+                else:
+                    data_temp['{0:%d-%m-%Y}'.format(r[0])] = r[1]
+        print(data_temp)
+        labels = []
+        data = []
+        for key in sorted(data_temp):
+            labels.append(key)
+            data.append(data_temp[key])
+
+        if data:
+            data = {
+                "datacollection": {
+                "labels": labels,
+                "datasets": [
+                    {
+                        "label": 'Casos Confirmados',
+                        "backgroundColor": dynamicColor(),
+                        "pointBackgroundColor": 'white',
+                        "borderWidth": 1,
+                        "pointBorderColor": '#249EBF',
+                        "data": data,
+                    }
+                ]
+                }
+            }
+        else:
+            data = None
+        return Response(data)
+
+class UFPanoramaDataDetail(APIView):
+    def get(self,request,pk):
+        uf = UF.objects.filter(Q(id=pk))
+        data = UFSerializer(uf,many=True).data
         return Response(data)
 
 class UFList(APIView):

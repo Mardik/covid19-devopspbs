@@ -70,7 +70,7 @@ GRUPO_POPULACIONAL = {
 #print(label)
 #print(data_prova)
 #print(data)
-
+"""
 # Teste da view MunicipioCasosConfirmadosGruposPopulacionalBarChartDetail
 municipio = Municipio.objects.filter(Q(uf__id=15) & Q(id=1501402)).first()
 label = []
@@ -95,7 +95,7 @@ for r in range(1,12):
 print(label)
 print(data_1)
 print(data_2)
-
+"""
 """
 # Casos de Obitos
 #
@@ -205,4 +205,106 @@ print(label)
 print(data_prova)
 print(data)
 print("##########")
+"""
+"""
+# Variação de casos confirmados por dia
+uf = UF.objects.get(id=15)
+data_temp = {}
+for m in uf.municipio_set.all():
+    registros_c_list = m.registodecasoconfirmado_set.all().values_list('created').annotate(count=Count('id')).order_by('created')
+    for r in registros_c_list:
+        if '{0:%d-%m-%Y}'.format(r[0]) in data_temp:
+            data_temp['{0:%d-%m-%Y}'.format(r[0])] += r[1]
+        else:
+            data_temp['{0:%d-%m-%Y}'.format(r[0])] = r[1]
+print(data_temp)
+labels = []
+data = []
+for key in sorted(data_temp):
+    labels.append(key)
+    data.append(data_temp[key])
+"""
+"""
+# evolução de casos confirmados, acumulado dia a dia
+uf = UF.objects.get(id=15)
+data_temp = {}
+for m in uf.municipio_set.all():
+    registros_c_list = m.registodecasoconfirmado_set.all().values_list('created').annotate(count=Count('id')).order_by('created')
+    for r in registros_c_list:
+        if '{0:%d-%m-%Y}'.format(r[0]) in data_temp:
+            data_temp['{0:%d-%m-%Y}'.format(r[0])] += r[1]
+        else:
+            data_temp['{0:%d-%m-%Y}'.format(r[0])] = r[1]
+print(data_temp)
+labels = []
+data = []
+acumulado = 0
+for key in sorted(data_temp):
+    labels.append(key)
+    acumulado += data_temp[key]
+    data.append(acumulado)
+print(labels)
+print(data)
+"""
+"""
+# Evolução de casos confirmados por cidade
+uf = UF.objects.get(id=15)
+data_temp = {}
+for m in uf.municipio_set.all():
+    totoal_registros = m.registodecasoconfirmado_set.all().count()
+    if totoal_registros:
+        data_temp[m.nome] = totoal_registros
+print(data_temp)
+labels = []
+data = []
+acumulado = 0
+for key in sorted(data_temp, key=data_temp.get, reverse=True):
+    labels.append(key)
+    data.append(data_temp[key])
+print(labels)
+print(data)
+"""
+"""
+# Casos Confirmados pro grupo etário:
+uf = UF.objects.get(id=15)
+labels =[    
+    'População de 00a04',
+    'População de 05a09',
+    'População de 10a14',
+    'População de 15a19',
+    'População de 20a24',
+    'População de 25a29',
+    'População de 30a39',
+    'População de 40a49',
+    'População de 50a59',
+    'População de 60a69',
+    'População de 70+',
+]
+data = [0,0,0,0,0,0,0,0,0,0,0]
+for m in uf.municipio_set.all():
+    data[0] = data[0] + m.populacao_00_04_infectada
+    data[1] = data[1] + m.populacao_05_09_infectada
+    data[2] = data[2] + m.populacao_10_14_infectada 
+    data[3] = data[3] + m.populacao_15_19_infectada 
+    data[4] = data[4] + m.populacao_20_24_infectada 
+    data[5] = data[5] + m.populacao_25_29_infectada 
+    data[6] = data[6] + m.populacao_30_39_infectada 
+    data[7] = data[7] + m.populacao_40_49_infectada 
+    data[8] = data[8] + m.populacao_50_59_infectada 
+    data[9] = data[9] + m.populacao_60_69_infectada
+    data[10] = data[10] + m.populacao_70_infectada
+print(labels)
+print(data)
+"""
+"""
+# Casos Confirmados agrupados por sexo
+uf = UF.objects.get(id=15)
+labels = ['masculino','feiminino','desconhecido']
+data = [0,0,0]
+for m in uf.municipio_set.all():
+    data[0] += m.registodecasoconfirmado_set.filter(sexo=0).count()
+    data[1] += m.registodecasoconfirmado_set.filter(sexo=1).count()
+    data[2] += m.registodecasoconfirmado_set.filter(sexo=2).count()
+print(labels)
+print(data)
 """

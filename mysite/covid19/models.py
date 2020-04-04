@@ -256,17 +256,17 @@ class Bairro(models.Model):
 class Municipio(models.Model):
     #Static datas
     GRUPO_POPULACIONAL = {    
-    '1':'populacao_00_04',
-    '2':'populacao_05_09',
-    '3':'populacao_10_14',
-    '4':'populacao_15_19',
-    '5':'populacao_20_24',
-    '6':'populacao_25_29',
-    '7':'populacao_30_39',
-    '8':'populacao_40_49',
-    '9':'populacao_50_59',
-    '10':'populacao_60_69',
-    '11':'populacao_70',
+    '1':'População de 00a04',
+    '2':'População de 05a09',
+    '3':'População de 10a14',
+    '4':'População de 15a19',
+    '5':'População de 20a24',
+    '6':'População de 25a29',
+    '7':'População de 30a39',
+    '8':'População de 40a49',
+    '9':'População de 50a59',
+    '10':'População de 60a69',
+    '11':'População de 70+',
     }
     #Listas
 
@@ -472,9 +472,266 @@ class UF(models.Model):
     nome = models.CharField(max_length=50, verbose_name='Nome:',blank=True)
     sigla = models.CharField(max_length=2, verbose_name='Sigla:',blank=True)
     #Atribuitos de Relacionamentos
-    
     #Metodos
+    @property
+    def populacao_00_04(self):
+        acumulado = 0
+        for m in self.municipio_set.all():
+            acumulado = acumulado + m.populacao_00_04
+        return acumulado
 
+    @property
+    def populacao_05_09(self):
+        acumulado = 0
+        for m in self.municipio_set.all():
+            acumulado = acumulado + m.populacao_05_09
+        return acumulado
+
+    @property
+    def populacao_10_14(self):
+        acumulado = 0
+        for m in self.municipio_set.all():
+            acumulado = acumulado + m.populacao_10_14
+        return acumulado
+
+    @property
+    def populacao_15_19(self):
+        acumulado = 0
+        for m in self.municipio_set.all():
+            acumulado = acumulado + m.populacao_15_19
+        return acumulado
+
+    @property
+    def populacao_20_24(self):
+        acumulado = 0
+        for m in self.municipio_set.all():
+            acumulado = acumulado + m.populacao_20_24
+        return acumulado
+
+    @property
+    def populacao_25_29(self):
+        acumulado = 0
+        for m in self.municipio_set.all():
+            acumulado = acumulado + m.populacao_25_29
+        return acumulado
+
+    @property
+    def populacao_30_39(self):
+        acumulado = 0
+        for m in self.municipio_set.all():
+            acumulado = acumulado + m.populacao_30_39
+        return acumulado
+
+    @property
+    def populacao_40_49(self):
+        acumulado = 0
+        for m in self.municipio_set.all():
+            acumulado = acumulado + m.populacao_40_49
+        return acumulado
+
+    @property
+    def populacao_50_59(self):
+        acumulado = 0
+        for m in self.municipio_set.all():
+            acumulado = acumulado + m.populacao_50_59
+        return acumulado
+
+    @property
+    def populacao_60_69(self):
+        acumulado = 0
+        for m in self.municipio_set.all():
+            acumulado = acumulado + m.populacao_60_69
+        return acumulado
+
+    @property
+    def populacao_70(self):
+        acumulado = 0
+        for m in self.municipio_set.all():
+            acumulado = acumulado + m.populacao_70
+        return acumulado
+
+    @property
+    def populacao_idosos(self):
+        acumulado = 0
+        for m in self.municipio_set.all():
+            acumulado = acumulado + m.populacao_idosos
+        return acumulado
+        
+    @property
+    def populacao_adultos(self):
+        acumulado = 0
+        for m in self.municipio_set.all():
+            acumulado = acumulado + m.populacao_adultos
+        return acumulado
+        
+    @property
+    def populacao_jovens(self):
+        acumulado = 0
+        for m in self.municipio_set.all():
+            acumulado = acumulado + m.populacao_jovens
+        return acumulado
+        
+    @property
+    def populacao_infantil(self):
+        acumulado = 0
+        for m in self.municipio_set.all():
+            acumulado = acumulado + m.populacao_infantil
+        return acumulado
+
+    @property
+    def populacao_total(self):
+        acumulado = 0
+        for m in self.municipio_set.all():
+            acumulado = acumulado + m.populacao_total
+        return acumulado
+
+    @property
+    def populacao_projetada(self):
+        acumulado = 0
+        for m in self.municipio_set.all():
+            acumulado = acumulado + m.populacao_projetada
+        return acumulado
+
+    @property
+    def populacao_00_04_infectada(self):
+        acumulado = 0
+        for m in self.municipio_set.all():
+            acumulado = acumulado + m.populacao_00_04_infectada
+        return acumulado
+        
+    @property
+    def populacao_05_09_infectada(self):
+        acumulado = 0
+        for m in self.municipio_set.all():
+            acumulado = acumulado + m.populacao_05_09_infectada
+        return acumulado
+        
+    @property
+    def populacao_10_14_infectada(self):
+        acumulado = 0
+        for m in self.municipio_set.all():
+            acumulado = acumulado + m.populacao_10_14_infectada
+        return acumulado
+        
+    @property
+    def populacao_15_19_infectada(self):
+        acumulado = 0
+        for m in self.municipio_set.all():
+            acumulado = acumulado + m.populacao_15_19_infectada
+        return acumulado
+        
+    @property
+    def populacao_20_24_infectada(self):
+        acumulado = 0
+        for m in self.municipio_set.all():
+            acumulado = acumulado + m.populacao_20_24_infectada
+        return acumulado
+        
+    @property
+    def populacao_25_29_infectada(self):
+        acumulado = 0
+        for m in self.municipio_set.all():
+            acumulado = acumulado + m.populacao_25_29_infectada
+        return acumulado
+        
+    @property
+    def populacao_30_39_infectada(self):
+        acumulado = 0
+        for m in self.municipio_set.all():
+            acumulado = acumulado + m.populacao_30_39_infectada
+        return acumulado
+        
+    @property
+    def populacao_40_49_infectada(self):
+        acumulado = 0
+        for m in self.municipio_set.all():
+            acumulado = acumulado + m.populacao_40_49_infectada
+        return acumulado
+        
+    @property
+    def populacao_50_59_infectada(self):
+        acumulado = 0
+        for m in self.municipio_set.all():
+            acumulado = acumulado + m.populacao_50_59_infectada
+        return acumulado
+    
+    @property
+    def populacao_60_69_infectada(self):
+        acumulado = 0
+        for m in self.municipio_set.all():
+            acumulado = acumulado + m.populacao_60_69_infectada
+        return acumulado
+    
+    @property
+    def populacao_70_infectada(self):
+        acumulado = 0
+        for m in self.municipio_set.all():
+            acumulado = acumulado + m.populacao_70_infectada
+        return acumulado
+
+    @property        
+    def populacao_idosos_infectada(self):
+        return (
+                self.populacao_60_69_infectada + 
+                self.populacao_70_infectada
+                )
+
+    @property
+    def populacao_adultos_infectada(self):
+        return (
+                self.populacao_20_24_infectada+
+                self.populacao_25_29_infectada+
+                self.populacao_30_39_infectada+
+                self.populacao_40_49_infectada+
+                self.populacao_50_59_infectada
+                )
+
+    @property
+    def populacao_jovens_infectada(self):
+        return  (
+                self.populacao_10_14_infectada+ 
+                self.populacao_15_19_infectada
+                )
+
+    @property
+    def populacao_infantil_infectada(self):
+        return (
+                self.populacao_00_04_infectada+ 
+                self.populacao_05_09_infectada
+                )
+    
+    @property
+    def populacao_infectada_total(self):
+        acumulado = 0
+        for m in self.municipio_set.all():
+            acumulado = acumulado + m.registodecasoconfirmado_set.all().count()
+        return acumulado        
+
+    #Métodos calculated fields sobre a população sob suspeita
+    @property
+    def populacao_sob_suspeita_total(self):
+        acumulado = 0
+        for m in self.municipio_set.all():
+            acumulado = acumulado + m.registodecasossuspeitos_set.all().count()
+        return acumulado 
+    
+    #Método calculated fields sobre a população recuperada/curada
+    @property
+    def populacao_curada_total(self):
+        acumulado = 0
+        for m in self.municipio_set.all():
+            acumulado = acumulado + m.registodecasocurado_set.all().count()
+        return acumulado
+
+    # Peço desculpas pela, mais foi a melhor referânecia que encontrei.
+    #Método calculated fields sobre a população que veio a obito.
+    @property
+    def populacao_obito_total(self):
+        acumulado = 0
+        for m in self.municipio_set.all():
+            acumulado = acumulado + m.registodecasoobito_set.all().count()
+        return acumulado        
+    
     #Meta dados
     class Meta:
         verbose_name = 'Unidade da Feração'

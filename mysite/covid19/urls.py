@@ -35,10 +35,18 @@ urlpatterns = [
         path('municipio/<int:pk>/casos_confirmados_acumulado_line_chart', 
                 views.MunicipioCasosConfirmadosAcumaldoLineChartDetail.as_view(), 
                 name='municipio_casos_confirmados_acumulado_line_chart_detail'),
+        
+        path('municipio/<int:pk>/casos_confirmados_segregados_pelo_sexo_pie_chart', 
+                views.MunicipioCasosConfirmadosSegregadosPeloSexoPieChartDetail.as_view(), 
+                name='municipio_casos_confirmados_segregados_pelo_sexo_pie_chart_detail'),        
 
-        path('municipio/<int:pk>/casos_confirmados_grupo_populacional_hbar_chart', 
-                views.MunicipioCasosConfirmadosGruposPopulacionalHBarChartDetail.as_view(), 
-                name='municipio_casos_confirmados_grupo_populacional_hbar_chart_detail'),
+        path('municipio/<int:pk>/casos_confirmados_segregados_por_idade_x_populacao_hbar_chart', 
+                views.MunicipioCasosConfirmadosSegregadosPorIdadeXPopulacaoHBarChartDetail.as_view(), 
+                name='municipio_casos_confirmados_segregados_por_idade_x_populacao_hbar_chart_detail'),
+
+        path('municipio/<int:pk>/casos_confirmados_por_grupo_populacional_bar_chart', 
+                views.MunicipioCasosConfirmadosPorGrupoPopulacionalBarChartDetail.as_view(), 
+                name='municipio_casos_confirmados_por_grupo_populacional_hbar_chart_detail'),
         
         # Casos de Obitos
         path('municipio/<int:pk>/casos_obitos_line_chart', 
@@ -104,13 +112,42 @@ urlpatterns = [
                 views.MunicipiosList.as_view(), 
                 name='municipios_list'),
 
-        path('ibge_grupos_populacionais/', 
-                views.IBGEGruposPopulacionais.as_view(), 
-                name='ibge_grupos_populacionais'),
+        #Retorna os dados detalhados de um municipio
+        path('uf/<int:pk>/casos_confirmados_por_cidade_bar_chart', 
+                views.UFCasosConfirmadosPorCidadeBarChartDetail.as_view(), 
+                name='uf_casos_confirmados_por_cidade_bar_chart_detail'),
+
+        #Retorna os dados detalhados de um municipio
+        path('uf/<int:pk>/casos_confirmados_por_grupo_populacional_bar_chart', 
+                views.UFCasosConfirmadosPorGrupoEtarioBarChartDetail.as_view(), 
+                name='uf_casos_confirmados_por_grupo_populacional_bar_chart_detail'),
+
+        #Retorna os dados detalhados de um municipio
+        path('uf/<int:pk>/casos_confirmados_segregados_pelo_sexo_pie_chart', 
+                views.UFCasosConfirmadosSegregadosPorSexoPieChartDetail.as_view(), 
+                name='uf_casos_confirmados_segregados_pelo_sexo_pie_chart_detail'),
+
+        #Retorna os dados detalhados de um municipio
+        path('uf/<int:pk>/casos_confirmados_acumulado_line_chart', 
+                views.UFCasosConfirmadosAcumaldoLineChartDetail.as_view(), 
+                name='uf_casos_confirmados_acumulado_line_chart_detail'),
+
+        #Retorna os dados detalhados de um municipio
+        path('uf/<int:pk>/casos_confirmados_line_chart', 
+                views.UFCasosConfirmadosLineChartDetail.as_view(), 
+                name='uf_casos_confirmados_line_chart_detail'),
+
+        #Retorna os dados detalhados de um municipio
+        path('uf/<int:pk>', 
+                views.UFPanoramaDataDetail.as_view(), 
+                name='uf_detail'), 
 
         #Retorna lista com todos os estados
         path('ufs/', 
                 views.UFList.as_view(), 
                 name='ufs_list'),
          
+        path('ibge_grupos_populacionais/', 
+                views.IBGEGruposPopulacionais.as_view(), 
+                name='ibge_grupos_populacionais'),
 ]
