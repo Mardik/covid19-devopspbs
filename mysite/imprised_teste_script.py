@@ -1,3 +1,4 @@
+from collections import OrderedDict
 from django.db.models import Count,Q
 from covid19.models import *
 from covid19.serializers import *
@@ -209,43 +210,59 @@ print("##########")
 """
 # Variação de casos confirmados por dia
 uf = UF.objects.get(id=15)
-data_temp = {}
-for m in uf.municipio_set.all():
-    registros_c_list = m.registodecasoconfirmado_set.all().values_list('created').annotate(count=Count('id')).order_by('created')
-    for r in registros_c_list:
-        if '{0:%d-%m-%Y}'.format(r[0]) in data_temp:
-            data_temp['{0:%d-%m-%Y}'.format(r[0])] += r[1]
-        else:
-            data_temp['{0:%d-%m-%Y}'.format(r[0])] = r[1]
-print(data_temp)
 labels = []
 data = []
-for key in sorted(data_temp):
-    labels.append(key)
-    data.append(data_temp[key])
-"""
-"""
-# evolução de casos confirmados, acumulado dia a dia
-uf = UF.objects.get(id=15)
-data_temp = {}
+data_temp_dict = {}
+data_temp = []
 for m in uf.municipio_set.all():
-    registros_c_list = m.registodecasoconfirmado_set.all().values_list('created').annotate(count=Count('id')).order_by('created')
-    for r in registros_c_list:
-        if '{0:%d-%m-%Y}'.format(r[0]) in data_temp:
-            data_temp['{0:%d-%m-%Y}'.format(r[0])] += r[1]
-        else:
-            data_temp['{0:%d-%m-%Y}'.format(r[0])] = r[1]
+    registros = m.registodecasoconfirmado_set.all().values_list('created').annotate(count=Count('id')).order_by('created')
+    for r in registros:
+             data_temp.append(r)
 print(data_temp)
-labels = []
-data = []
-acumulado = 0
-for key in sorted(data_temp):
+data_temp.sort(key=lambda tup: tup[0])
+print(data_temp)
+for d in data_temp:
+     if '{0:%d-%m-%Y}'.format(d[0]) in data_temp_dict:
+             data_temp_dict['{0:%d-%m-%Y}'.format(d[0])] += d[1]
+     else:
+             data_temp_dict['{0:%d-%m-%Y}'.format(d[0])] = d[1]
+print(data_temp_dict)
+for key in data_temp_dict:
     labels.append(key)
-    acumulado += data_temp[key]
-    data.append(acumulado)
+    data.append(data_temp_dict[key])
 print(labels)
 print(data)
 """
+
+"""
+# evolução de casos confirmados, acumulado dia a dia
+uf = UF.objects.get(id=15)
+labels = []
+data = []
+data_temp_dict = {}
+data_temp = []
+for m in uf.municipio_set.all():
+    registros = m.registodecasoconfirmado_set.all().values_list('created').annotate(count=Count('id')).order_by('created')
+    for r in registros:
+             data_temp.append(r)
+print(data_temp)
+data_temp.sort(key=lambda tup: tup[0])
+print(data_temp)
+for d in data_temp:
+     if '{0:%d-%m-%Y}'.format(d[0]) in data_temp_dict:
+             data_temp_dict['{0:%d-%m-%Y}'.format(d[0])] += d[1]
+     else:
+             data_temp_dict['{0:%d-%m-%Y}'.format(d[0])] = d[1]
+print(data_temp_dict)
+total = 0
+for key in data_temp_dict:
+    labels.append(key)
+    total += data_temp_dict[key]
+    data.append(total)
+print(labels)
+print(data)
+"""
+
 """
 # Evolução de casos confirmados por cidade
 uf = UF.objects.get(id=15)

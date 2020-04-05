@@ -5,17 +5,16 @@ from rest_framework.schemas import get_schema_view
 
 API_TITLE = 'Pará | Covid19 API'
 API_DESCRIPTION = """
-<p>
+
 Está API tem como objetivo, fornecer dados sobre a evolução da infecção provocada 
 pelo coronavirus, dados populacionais do IBGE como, população total, projetada,
 população por grupos populacionas segredados por idade, além dos dados sobre
 instituições de saúde do estado e seus recursos em saúde relevantes.
-</p>
-<p>
-Essa API foi idealizada pela comunidade <a href="https://devopspbs.org/">DevOpsPBS</a>,
+
+Essa API foi idealizada pela comunidade DevOpsPBS, site https://devopspbs.org/,
 mais sinta-se a vontade para da um fork nesse projeto, propor melhoria ou realizar 
 pull requests.
-</p>
+
 """
 
 urlpatterns = [

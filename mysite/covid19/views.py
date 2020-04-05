@@ -506,8 +506,8 @@ class UFCasosConfirmadosPorCidadeBarChartDetail(APIView):
 
         return Response(data)
 
-class UFCasosConfirmadosPorGrupoEtarioBarChartDetail(APIView):
 #Casos Confirmados pro grupo etário:
+class UFCasosConfirmadosPorGrupoEtarioBarChartDetail(APIView):
     def get(self,request,pk):
         uf = UF.objects.get(id=pk)
         labels =[    
@@ -557,8 +557,8 @@ class UFCasosConfirmadosPorGrupoEtarioBarChartDetail(APIView):
             data = None
         return Response(data)
 
-class UFCasosConfirmadosSegregadosPorSexoPieChartDetail(APIView):
 #Casos Confirmados agrupados por sexo
+class UFCasosConfirmadosSegregadosPorSexoPieChartDetail(APIView):
     def get(self,request,pk):
         uf = UF.objects.get(id=pk)
         labels = ['masculino','feiminino','desconhecido']
@@ -591,22 +591,28 @@ class UFCasosConfirmadosSegregadosPorSexoPieChartDetail(APIView):
 class UFCasosConfirmadosAcumaldoLineChartDetail(APIView):
     def get(self,request,pk):
         uf = UF.objects.get(id=pk)
-        data_temp = {}
-        for m in uf.municipio_set.all():
-            registros_c_list = m.registodecasoconfirmado_set.all().values_list('created').annotate(count=Count('id')).order_by('created')
-            for r in registros_c_list:
-                if '{0:%d-%m-%Y}'.format(r[0]) in data_temp:
-                    data_temp['{0:%d-%m-%Y}'.format(r[0])] += r[1]
-                else:
-                    data_temp['{0:%d-%m-%Y}'.format(r[0])] = r[1]
-        print(data_temp)
         labels = []
         data = []
-        acumulado = 0
-        for key in sorted(data_temp):
+        data_temp_dict = {}
+        data_temp = []
+        for m in uf.municipio_set.all():
+            registros = m.registodecasoconfirmado_set.all().values_list('created').annotate(count=Count('id')).order_by('created')
+            for r in registros:
+                    data_temp.append(r)
+
+        data_temp.sort(key=lambda tup: tup[0])
+
+        for d in data_temp:
+            if '{0:%d-%m-%Y}'.format(d[0]) in data_temp_dict:
+                    data_temp_dict['{0:%d-%m-%Y}'.format(d[0])] += d[1]
+            else:
+                    data_temp_dict['{0:%d-%m-%Y}'.format(d[0])] = d[1]
+
+        total = 0
+        for key in data_temp_dict:
             labels.append(key)
-            acumulado += data_temp[key]
-            data.append(acumulado)
+            total += data_temp_dict[key]
+            data.append(total)
 
         if data:
             data = {
@@ -631,20 +637,26 @@ class UFCasosConfirmadosAcumaldoLineChartDetail(APIView):
 class UFCasosConfirmadosLineChartDetail(APIView):
     def get(self,request,pk):
         uf = UF.objects.get(id=pk)
-        data_temp = {}
-        for m in uf.municipio_set.all():
-            registros_c_list = m.registodecasoconfirmado_set.all().values_list('created').annotate(count=Count('id')).order_by('created')
-            for r in registros_c_list:
-                if '{0:%d-%m-%Y}'.format(r[0]) in data_temp:
-                    data_temp['{0:%d-%m-%Y}'.format(r[0])] += r[1]
-                else:
-                    data_temp['{0:%d-%m-%Y}'.format(r[0])] = r[1]
-        print(data_temp)
         labels = []
         data = []
-        for key in sorted(data_temp):
+        data_temp_dict = {}
+        data_temp = []
+        for m in uf.municipio_set.all():
+            registros = m.registodecasoconfirmado_set.all().values_list('created').annotate(count=Count('id')).order_by('created')
+            for r in registros:
+                    data_temp.append(r)
+
+        data_temp.sort(key=lambda tup: tup[0])
+
+        for d in data_temp:
+            if '{0:%d-%m-%Y}'.format(d[0]) in data_temp_dict:
+                    data_temp_dict['{0:%d-%m-%Y}'.format(d[0])] += d[1]
+            else:
+                    data_temp_dict['{0:%d-%m-%Y}'.format(d[0])] = d[1]
+
+        for key in data_temp_dict:
             labels.append(key)
-            data.append(data_temp[key])
+            data.append(data_temp_dict[key])
 
         if data:
             data = {
