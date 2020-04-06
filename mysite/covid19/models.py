@@ -36,6 +36,7 @@ class RegistoDeCasoConfirmado(models.Model):
         (9,'populacao_50_59'),
         (10,'populacao_60_69'),
         (11,'populacao_70'),
+        (12,'desconhecido'),
     ]
 
     SEXO = [
@@ -76,6 +77,7 @@ class RegistoDeCasoObito(models.Model):
         (9,'populacao_50_59'),
         (10,'populacao_60_69'),
         (11,'populacao_70'),
+        (12,'desconhecido'),
     ]
 
     SEXO = [
@@ -116,6 +118,7 @@ class RegistoDeCasoCurado(models.Model):
         (9,'populacao_50_59'),
         (10,'populacao_60_69'),
         (11,'populacao_70'),
+        (12,'desconhecido'),
     ]
 
     SEXO = [
@@ -156,6 +159,7 @@ class RegistoDeCasoGrave(models.Model):
         (9,'populacao_50_59'),
         (10,'populacao_60_69'),
         (11,'populacao_70'),
+        (12,'desconhecido'),
     ]
 
     SEXO = [
@@ -267,6 +271,7 @@ class Municipio(models.Model):
     '9':'População de 50a59',
     '10':'População de 60a69',
     '11':'População de 70+',
+    '12':'desconhecido',
     }
     #Listas
 
@@ -283,7 +288,7 @@ class Municipio(models.Model):
     populacao_40_49 = models.BigIntegerField(default=0)
     populacao_50_59 = models.BigIntegerField(default=0)
     populacao_60_69 = models.BigIntegerField(default=0)
-    populacao_70 = models.BigIntegerField(default=0)    
+    populacao_70 = models.BigIntegerField(default=0)   
 
     #Atributos de Relacionamentos
     uf = models.ForeignKey('UF', verbose_name='UF:',on_delete=models.PROTECT)
@@ -375,6 +380,10 @@ class Municipio(models.Model):
     @property
     def populacao_70_infectada(self):
         return self.registodecasoconfirmado_set.all().filter(grupo_populacional=11).count()
+
+    @property
+    def populacao_infectada_grupo_etario_desconhecido(self):
+        return self.registodecasoconfirmado_set.all().filter(grupo_populacional=12).count()
 
     @property        
     def populacao_idosos_infectada(self):

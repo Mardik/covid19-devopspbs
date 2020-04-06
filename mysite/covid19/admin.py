@@ -12,9 +12,9 @@ from .models import *
 
 class RegistoDeCasoConfirmadoAdmin(admin.ModelAdmin):
     list_display = [
-        'municipio',
         'sexo',
         'grupo_populacional',
+        'municipio',
         'created',
     ]
     list_filter = [

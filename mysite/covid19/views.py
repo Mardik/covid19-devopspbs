@@ -222,7 +222,7 @@ class MunicipioCasosConfirmadosPorGrupoPopulacionalBarChartDetail(APIView):
         labels = []
         data = []
 
-        for r in range(1,12):
+        for r in range(1,13):
             labels.append(municipio.GRUPO_POPULACIONAL[str(r)])
             data_empty = municipio.registodecasoconfirmado_set.filter(grupo_populacional=r).count()
             data.append(data_empty)
@@ -522,8 +522,9 @@ class UFCasosConfirmadosPorGrupoEtarioBarChartDetail(APIView):
             'População de 50a59',
             'População de 60a69',
             'População de 70+',
+            'Desconhecido',
         ]
-        data = [0,0,0,0,0,0,0,0,0,0,0]
+        data = [0,0,0,0,0,0,0,0,0,0,0,0]
         for m in uf.municipio_set.all():
             data[0] = data[0] + m.populacao_00_04_infectada
             data[1] = data[1] + m.populacao_05_09_infectada
@@ -536,6 +537,7 @@ class UFCasosConfirmadosPorGrupoEtarioBarChartDetail(APIView):
             data[8] = data[8] + m.populacao_50_59_infectada 
             data[9] = data[9] + m.populacao_60_69_infectada
             data[10] = data[10] + m.populacao_70_infectada
+            data[11] = data[11] + m.populacao_infectada_grupo_etario_desconhecido
 
         if data:
             data = {
