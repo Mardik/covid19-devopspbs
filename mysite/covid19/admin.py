@@ -9,19 +9,6 @@ from .models import *
 #Admin classe do model Municipio contemplando a exição tabular para
 #registro de casos supeitos e excluindo o campo registros de casos supeitos
 #do change form.
-
-class RegistoDeCasoConfirmadoAdmin(admin.ModelAdmin):
-    list_display = [
-        'sexo',
-        'grupo_populacional',
-        'municipio',
-        'created',
-    ]
-    list_filter = [
-        'municipio__nome'
-    ]
-    raw_id_fields = [('municipio')]
-
 class RegistoDeCasosSuspeitosAdmin(admin.ModelAdmin):
     list_display = [
         'municipio',
@@ -31,7 +18,74 @@ class RegistoDeCasosSuspeitosAdmin(admin.ModelAdmin):
     list_filter = [
         'municipio__nome'
     ]
-    raw_id_fields = [('municipio')]
+
+class RegistoDeCasoConfirmadoAdmin(admin.ModelAdmin):
+    fields = (
+        'sexo',
+        'grupo_populacional',
+        'municipio',
+        'created',
+    )    
+    list_display = [
+        'sexo',
+        'grupo_populacional',
+        'municipio',
+        'created',
+    ]
+    list_filter = [
+        'municipio__nome'
+    ]
+
+class RegistoDeCasoObitoAdmin(admin.ModelAdmin):
+    fields = (
+        'sexo',
+        'grupo_populacional',
+        'municipio',
+        'created',
+    )
+    list_display = [
+        'sexo',
+        'grupo_populacional',
+        'municipio',
+        'created',
+    ]
+    list_filter = [
+        'municipio__nome'
+    ]
+
+class RegistoDeCasoCuradoAdmin(admin.ModelAdmin):
+    fields = (
+        'sexo',
+        'grupo_populacional',
+        'municipio',
+        'created',
+    )
+    list_display = [
+        'sexo',
+        'grupo_populacional',
+        'municipio',
+        'created',
+    ]
+    list_filter = [
+        'municipio__nome'
+    ]
+
+class RegistoDeCasoGraveAdmin(admin.ModelAdmin):
+    fields = (
+        'sexo',
+        'grupo_populacional',
+        'municipio',
+        'created',
+    )
+    list_display = [
+        'sexo',
+        'grupo_populacional',
+        'municipio',
+        'created',
+    ]
+    list_filter = [
+        'municipio__nome'
+    ]
 
 class MunicipioAdmin(admin.ModelAdmin):
     search_fields = ['nome']
@@ -96,7 +150,7 @@ admin.site.register(Bairro)
 admin.site.register(InstituicaoDeSaude)
 admin.site.register(RegistoDeCasoConfirmado,RegistoDeCasoConfirmadoAdmin)
 admin.site.register(RegistoDeCasosSuspeitos,RegistoDeCasosSuspeitosAdmin)
-admin.site.register(RegistoDeCasoObito)
-admin.site.register(RegistoDeCasoCurado)
-admin.site.register(RegistoDeCasoGrave)
+admin.site.register(RegistoDeCasoObito,RegistoDeCasoObitoAdmin)
+admin.site.register(RegistoDeCasoCurado,RegistoDeCasoCuradoAdmin)
+admin.site.register(RegistoDeCasoGrave,RegistoDeCasoGraveAdmin)
 admin.site.register(RegistoDeRecursosEmSaude)
