@@ -463,6 +463,18 @@ class MunicipioPanoramaDataDetail(APIView):
         data = MunicipioSerializer(municipio,many=True).data
         return Response(data)
 
+class MunicipiosSelectInputList(APIView):
+    def get(self,request):
+        # lista de municipios para select input
+        municipios = Municipio.objects.values_list('nome','id').order_by('nome')
+        data = []
+        for m in municipios:
+            dict_temp = {'text':'','value':''} 
+            dict_temp['text'] = m[0]
+            dict_temp['value'] = m[1]
+            data.append(dict_temp)
+        return Response(data)
+
 class MunicipiosList(APIView):
     def get(self,request):
         municipios = Municipio.objects.all()

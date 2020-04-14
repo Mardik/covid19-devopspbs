@@ -325,3 +325,19 @@ for m in uf.municipio_set.all():
 print(labels)
 print(data)
 """
+"""
+# lista de municipios para selectd input
+municipios = Municipio.objects.values_list('nome','id').order_by('nome')
+#for m in municipios:
+#    print(m)
+data = []
+for m in municipios:
+    print(m)
+    dict_temp = {'text':'','value':''}
+    dict_temp['text'] = m[0]
+    dict_temp['value'] = m[1]
+    print(dict_temp)
+    data.append(dict_temp)
+for m in data:
+    print(m)
+"""

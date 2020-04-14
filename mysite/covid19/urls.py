@@ -106,6 +106,11 @@ urlpatterns = [
                 views.MunicipioPanoramaDataDetail.as_view(), 
                 name='municipio_detail'), 
 
+        #Retorna lista com todos os municipios preparada para select input
+        path('municipios/view/municipio-dashboard/select-input', 
+                views.MunicipiosSelectInputList.as_view(), 
+                name='municipios_view_municipio-dashboard_select-input_list'),
+
         #Retorna lista com todos os municipios
         path('municipios/', 
                 views.MunicipiosList.as_view(), 

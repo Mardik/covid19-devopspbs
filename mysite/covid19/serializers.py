@@ -67,7 +67,7 @@ class MunicipioSerializer(serializers.ModelSerializer):
             #'populacao_50_59_infectada',
             #'populacao_60_69_infectada',
             #'populacao_70_infectada',
-            'populacao_sob_suspeita_total',
+            'populacao_sob_suspeita',
             'populacao_curada_total',
             'populacao_obito_total',
         )

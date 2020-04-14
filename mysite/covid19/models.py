@@ -426,8 +426,8 @@ class Municipio(models.Model):
 
     #Métodos calculated fields sobre a população sob suspeita
     @property
-    def populacao_sob_suspeita_total(self):
-        return self.registodecasossuspeitos_set.all().count() 
+    def populacao_sob_suspeita(self):
+        return self.registodecasossuspeitos_set.all().order_by('created').last().quantidade
     
     #Método calculated fields sobre a população recuperada/curada
     @property
