@@ -1,3 +1,5 @@
+Projeto migrado para [novo repositório](https://gitlab.com/devopspbs/django/covid-19)
+
 Repositorio do projeto DevOpsPBS Covid-19, o objetivo to projeto é criar um dash board com dados importanteste sobre a epidemia do covid-19 e de recursos em saúde, e monitorlos diaramente, para ajudar na tomada de decisões dos getores municipais.
 
 ## Pre-requisitos:
